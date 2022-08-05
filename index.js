@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import './i18nInit';
+//import './i18nInit';
 import { AppRegistry } from 'react-native';
 import { setJSExceptionHandler } from 'react-native-exception-handler';
 import App from './src/App';

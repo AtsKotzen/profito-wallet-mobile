@@ -6,8 +6,8 @@
  */
 
 // Workaround to prevent error when using locale in android
-import 'intl';
-import 'intl/locale-data/jsonp/en';
+//import 'intl';
+//import 'intl/locale-data/jsonp/en';
 
 // This workaround was in App.js before
 // however this redux file is loaded before and we need the hathorLib here
