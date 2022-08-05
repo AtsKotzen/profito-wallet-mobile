@@ -29,7 +29,7 @@ import CopyClipboard from '../components/CopyClipboard';
  * server {str} URL of the full node this wallet is connected to
  */
 const mapStateToProps = (state) => {
-  const server = hathorLib.storage.getItem('wallet:server');
+  const server = hathorLib.storage.getItem('http://localhost:8080/v1a/');
   return {
     selectedToken: state.selectedToken,
     isOnline: state.isOnline,

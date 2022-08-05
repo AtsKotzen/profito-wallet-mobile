@@ -76,5 +76,5 @@ export const METADATA_CONCURRENT_DOWNLOAD = 5;
 
 
 // Wallet service URLs
-export const WALLET_SERVICE_MAINNET_BASE_URL = 'https://wallet-service.hathor.network/';
+export const WALLET_SERVICE_MAINNET_BASE_URL = 'http://localhost:8080/v1a/';
 export const WALLET_SERVICE_MAINNET_BASE_WS_URL = 'wss://ws.wallet-service.hathor.network/';
