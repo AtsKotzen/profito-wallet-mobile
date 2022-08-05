@@ -364,8 +364,8 @@ export const startWallet = (words, pin) => async (dispatch) => {
     });
   } else {
     const connection = new Connection({
-      network: networkName, // app currently connects only to mainnet
-      servers: ['https://mobile.wallet.hathor.network/v1a/'],
+      network: networkName, // app currently connects only to testnet
+      servers: ['https://node1.testnet.hathor.network/v1a/'],
     });
 
     const beforeReloadCallback = () => {
