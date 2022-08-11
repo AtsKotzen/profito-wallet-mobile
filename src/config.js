@@ -42,4 +42,4 @@ export const _PRIMARY_COLOR = '#8C46FF';
 /**
  * Sentry DSN to send errors
  */
-export const _SENTRY_DSN = 'https://c1ebae9159f741e8937abdbfbeba8e8a@o239606.ingest.sentry.io/5304101';
+export const _SENTRY_DSN = '';

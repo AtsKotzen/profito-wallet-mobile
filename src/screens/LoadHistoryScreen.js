@@ -49,7 +49,7 @@ class LoadHistoryScreen extends React.Component {
   componentDidMount() {
     // This setTimeout exists to prevent blocking the main thread
     setTimeout(() => this.initializeWallet(), 0);
-    this.props.resetLoadedData();
+    //this.props.resetLoadedData();
   }
 
   componentWillUnmount() {

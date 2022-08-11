@@ -6,8 +6,8 @@
  */
 
 // Workaround to prevent error when using locale in android
-//import 'intl';
-//import 'intl/locale-data/jsonp/en';
+import 'intl';
+import 'intl/locale-data/jsonp/en';
 
 // This workaround was in App.js before
 // however this redux file is loaded before and we need the hathorLib here
@@ -76,5 +76,5 @@ export const METADATA_CONCURRENT_DOWNLOAD = 5;
 
 
 // Wallet service URLs
-export const WALLET_SERVICE_MAINNET_BASE_URL = 'http://localhost:8080/v1a/';
+export const WALLET_SERVICE_MAINNET_BASE_URL = 'https://wallet-service.hathor.network/';
 export const WALLET_SERVICE_MAINNET_BASE_WS_URL = 'wss://ws.wallet-service.hathor.network/';

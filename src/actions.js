@@ -324,7 +324,7 @@ export const startWallet = (words, pin) => async (dispatch) => {
   // then we don't know if we've cleaned up the wallet data in the storage
   walletUtil.cleanLoadedData();
 
-  const networkName = 'mainnet';
+  const networkName = 'testnet';
   const uniqueDeviceId = await getUniqueId();
   const featureFlags = new FeatureFlags(uniqueDeviceId, networkName);
   const useWalletService = await featureFlags.shouldUseWalletService();
