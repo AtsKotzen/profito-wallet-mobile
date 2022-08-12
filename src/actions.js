@@ -324,7 +324,7 @@ export const startWallet = (words, pin) => async (dispatch) => {
   // then we don't know if we've cleaned up the wallet data in the storage
   walletUtil.cleanLoadedData();
 
-  const networkName = 'testnet';
+  const networkName = 'mainnet';
   const uniqueDeviceId = await getUniqueId();
   const featureFlags = new FeatureFlags(uniqueDeviceId, networkName);
   const useWalletService = await featureFlags.shouldUseWalletService();
@@ -365,7 +365,7 @@ export const startWallet = (words, pin) => async (dispatch) => {
   } else {
     const connection = new Connection({
       network: networkName, // app currently connects only to testnet
-      servers: ['https://node1.testnet.hathor.network/v1a/'],
+      servers: ['https://node1.mainnet.hathor.network/v1a/'],
     });
 
     const beforeReloadCallback = () => {

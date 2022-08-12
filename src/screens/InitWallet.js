@@ -53,7 +53,7 @@ class WelcomeScreen extends React.Component {
       <SafeAreaView style={{ flex: 1 }}>
         <HathorHeader withLogo />
         <View style={this.style.container}>
-          <Text style={this.style.title}>{t`Welcome to Profito Wallet!`}</Text>
+          <Text style={this.style.title}>{t`Welcome to Athus Wallet!`}</Text>
           
           <View>
             <TextFmt style={this.style.text}>
