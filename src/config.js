@@ -35,9 +35,16 @@ export const _IS_MULTI_TOKEN = true;
 export const _DEFAULT_TOKEN = hathorLib.constants.HATHOR_TOKEN_CONFIG;
 
 /**
- * App's primary color (Hathor purple)
+ * App's primary color (Profito Orange)
  */
 export const _PRIMARY_COLOR = '#fda800';
+
+/**
+ * App's color (Profito Orange): '#fda800' 
+ * App's color (Profito Yellow): '#fada15' 
+ * App's color (Profito Black): '#232323'
+ * App's color (Profito Grey): '#cdc4d1'
+ * /
 
 /**
  * Sentry DSN to send errors
