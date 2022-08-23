@@ -6,6 +6,7 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
+    "link": "react-native link",
     "lint": "eslint .",
     "test": "jest",
     "locale-update-pot": "ttag extract -o ./locale/texts.pot ./src/",

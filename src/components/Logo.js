@@ -8,7 +8,7 @@
 import React from 'react';
 import { Image } from 'react-native';
 
-import logo from '../assets/images/logo.png';
+import logo from '../assets/images/profito-logo.jpeg';
 
 const Logo = (props) => (
   <Image
