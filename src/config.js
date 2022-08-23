@@ -37,7 +37,7 @@ export const _DEFAULT_TOKEN = hathorLib.constants.HATHOR_TOKEN_CONFIG;
 /**
  * App's primary color (Hathor purple)
  */
-export const _PRIMARY_COLOR = '#ce7e00';
+export const _PRIMARY_COLOR = '#fda800';
 
 /**
  * Sentry DSN to send errors
