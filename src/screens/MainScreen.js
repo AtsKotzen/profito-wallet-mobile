@@ -155,7 +155,7 @@ class MainScreen extends React.Component {
 
     return (
       <SafeAreaView style={{
-        flex: 1, backgroundColor: '#F7F7F7', justifyContent: 'center', alignItems: 'center',
+        flex: 1, backgroundColor: '#fda800', justifyContent: 'center', alignItems: 'center',
       }}
       >
         {this.state.modal}

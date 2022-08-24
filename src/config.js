@@ -34,7 +34,7 @@ export const _IS_MULTI_TOKEN = false;
  */
 //export const _DEFAULT_TOKEN = hathorLib.constants.HATHOR_TOKEN_CONFIG;
 export const _DEFAULT_TOKEN = {
-      name: 'Profito',
+      name: 'Profito Token',
       symbol: 'PRF',
       uid: '0000089ac2800ed9f1297d1569b7089bd26107d9c9d6a05d6dbe14890e793c41'
     };
