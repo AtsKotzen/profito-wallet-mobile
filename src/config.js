@@ -20,7 +20,7 @@ import hathorLib from '@hathor/wallet-lib';
  * . remove register/unregister token options;
  * . remove create new token option;
  */
-export const _IS_MULTI_TOKEN = true;
+export const _IS_MULTI_TOKEN = false;
 
 /**
  * Default token.
@@ -29,10 +29,15 @@ export const _IS_MULTI_TOKEN = true;
  * {
  *   name: 'YanCoin',
  *   symbol: 'YAN',
- *   uid: '000003a3b261e142d3dfd84970d3a50a93b5bc3a66a3b6ba973956148a3eb824'
+ *   uid: '0000089ac2800ed9f1297d1569b7089bd26107d9c9d6a05d6dbe14890e793c41'
  * }
  */
-export const _DEFAULT_TOKEN = hathorLib.constants.HATHOR_TOKEN_CONFIG;
+//export const _DEFAULT_TOKEN = hathorLib.constants.HATHOR_TOKEN_CONFIG;
+export const _DEFAULT_TOKEN = {
+      name: 'Profito',
+      symbol: 'PRF',
+      uid: '0000089ac2800ed9f1297d1569b7089bd26107d9c9d6a05d6dbe14890e793c41'
+    };
 
 /**
  * App's primary color (Profito Orange)
