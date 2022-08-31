@@ -339,8 +339,8 @@ class TxListItem extends React.Component {
     if (item.balance === 0) {
       return <View style={this.style.icon} />;
     }
-    let name; let
-      color;
+    let name; 
+    let color;
     const style = [this.style.icon];
     if (item.balance > 0) {
       name = 'icReceive';
