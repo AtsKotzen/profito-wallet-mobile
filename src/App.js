@@ -59,11 +59,13 @@ import CreateTokenSymbol from './screens/CreateTokenSymbol';
 import CreateTokenAmount from './screens/CreateTokenAmount';
 import CreateTokenConfirm from './screens/CreateTokenConfirm';
 import CreateTokenDetail from './screens/CreateTokenDetail';
+import Login from './screens/Login';
 import ErrorModal from './components/ErrorModal';
 
 
 const InitStack = createStackNavigator(
   {
+    Login,
     WelcomeScreen,
     InitialScreen,
     NewWordsScreen,
@@ -72,7 +74,7 @@ const InitStack = createStackNavigator(
     ChoosePinScreen,
   },
   {
-    initialRouteName: 'WelcomeScreen',
+    initialRouteName: 'Login',
     headerMode: 'none',
   }
 );
@@ -343,8 +345,9 @@ const SwitchNavigator = createSwitchNavigator({
   Decide: DecideStackScreen,
   App: AppStackWrapper,
   Init: InitStack,
+  Login: Login
 }, {
-  initialRouteName: 'Decide',
+  initialRouteName: 'Login',
 });
 
 const NavigationContainer = createAppContainer(SwitchNavigator);
