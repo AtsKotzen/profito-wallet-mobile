@@ -1,5 +1,5 @@
-import { Text, View, StyleSheet, TextInput, Button } from 'react-native'
-import React, { Component } from 'react'
+import { Text, View, StyleSheet, TextInput, Button } from 'react-native';
+import React, { Component } from 'react';
 import HathorHeader from '../components/HathorHeader';
 
 export default class Login extends Component {
@@ -20,7 +20,7 @@ export default class Login extends Component {
           underlineColorAndroid='white'         
         />
         <Button
-        style={styles.button}
+        style={styles.btn}       
         color={'#fda800'}        
         title={`Login`}
         onPress={() => this.props.navigation.navigate('MainScreen')}
@@ -37,19 +37,32 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#232323',
-    alignItems: 'center',    
+    paddingTop: 50     
   }, 
   textInput: {
     width: 200,
-    color: 'white',      
+    color: 'white',
+    alignSelf: 'center' 
   },
   text: {
-    color: 'white'
+    color: 'white',
+    alignSelf: 'center',
+    paddingTop: 10
   },
   info: {
-    color: 'white'
+    color: 'white',
+    fontSize: 21,
+    fontWeight: 'bold',
+    alignSelf: 'center',
+    opacity: 30,
+    paddingTop: 15
   },
   link: {
-    color: '#fda800'
+    color: '#fda800',
+    alignSelf: 'center'    
+  },
+  btn: {
+    alignSelf: 'center',
+    paddingTop: 10   
   }
 })
