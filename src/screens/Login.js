@@ -25,7 +25,7 @@ export default class Login extends Component {
           <Button
             color={'#fda800'}
             title={`Login`}
-            onPress={() => this.props.navigation.navigate('MainScreen')}
+            onPress={login}
           />
           <Text style={styles.text}>Ainda não tem uma conta?</Text>
           <Text style={styles.link}>Cadastre-se</Text>
@@ -34,6 +34,11 @@ export default class Login extends Component {
       </View>
     );
   }
+}
+
+const login = () => {
+  alert('Botão Login clicado!')
+  //this.props.navigation.navigate('MainScreen')
 }
 
 const styles = StyleSheet.create({
