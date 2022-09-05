@@ -81,11 +81,12 @@ const InitStack = createStackNavigator(
 
 const DashboardStack = createStackNavigator(
   {
+    Login,
     Dashboard,
     MainScreen,
   },
   {
-    initialRouteName: 'Dashboard',
+    initialRouteName: 'Login',
     headerMode: 'none',
   },
 );
@@ -344,10 +345,9 @@ const AppStackWrapper = connect(mapStateToProps, mapDispatchToProps)(_AppStackWr
 const SwitchNavigator = createSwitchNavigator({
   Decide: DecideStackScreen,
   App: AppStackWrapper,
-  Init: InitStack,
-  Login: Login
+  Init: InitStack,  
 }, {
-  initialRouteName: 'Login',
+  initialRouteName: 'Decide',
 });
 
 const NavigationContainer = createAppContainer(SwitchNavigator);

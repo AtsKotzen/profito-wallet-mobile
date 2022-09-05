@@ -47,7 +47,7 @@ export const _PRIMARY_COLOR = '#fda800';
 /**
  * App's color (Profito Orange): '#fda800' 
  * App's color (Profito Yellow): '#fada15' 
- * App's color (Profito Black): '#232323'
+ * App's color (Profito Black): '#202020'
  * App's color (Profito Grey): '#cdc4d1'
  * /
 

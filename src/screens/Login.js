@@ -1,12 +1,15 @@
 import {Text, View, StyleSheet, TextInput, Button} from 'react-native';
 import React, {Component} from 'react';
 import HathorHeader from '../components/HathorHeader';
+import NavigationService from '../NavigationService';
 
 export default class Login extends Component {
   render() {
     return (
       <View style={styles.container}>
         <HathorHeader withLogo />
+        <Text style={styles.text}>Este é seu primeiro acesso.</Text>
+        <Text style={styles.text}>Cadastre-se para continuar</Text>
         <View style={styles.inputView}>
           <TextInput
             style={styles.textInput}
@@ -19,16 +22,17 @@ export default class Login extends Component {
             placeholder="Senha"
             placeholderTextColor="white"
             underlineColorAndroid="white"
+            secureTextEntry={true}
           />
         </View>
         <View style={styles.buttonView}>
           <Button
             color={'#fda800'}
-            title={`Login`}
+            title={`Criar conta`}
             onPress={login}
           />
-          <Text style={styles.text}>Ainda não tem uma conta?</Text>
-          <Text style={styles.link}>Cadastre-se</Text>
+          {/* <Text style={styles.text}>Ainda não tem uma conta?</Text>
+          <Text style={styles.link}>Cadastre-se</Text> */}
           <Text style={styles.profitoClub}>profito.club</Text>
         </View>
       </View>
@@ -37,14 +41,13 @@ export default class Login extends Component {
 }
 
 const login = () => {
-  alert('Botão Login clicado!')
-  //this.props.navigation.navigate('MainScreen')
+  NavigationService.navigate('WelcomeScreen')
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#232323',
+    backgroundColor: '#202020',    
     paddingTop: 50,
   },
   inputView: {
@@ -57,6 +60,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: 'white',
+    color: '#fda800',
     alignSelf: 'center',
     paddingTop: 10,
   },
