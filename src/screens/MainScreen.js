@@ -17,9 +17,9 @@ import {
   TouchableWithoutFeedback,
   TouchableHighlight,
 } from 'react-native';
-import { connect } from 'react-redux';
-import { t } from 'ttag';
-import { get } from 'lodash';
+import {connect} from 'react-redux';
+import {t} from 'ttag';
+import {get} from 'lodash';
 
 import moment from 'moment';
 import hathorLib from '@hathor/wallet-lib';
@@ -28,23 +28,31 @@ import HathorHeader from '../components/HathorHeader';
 import SimpleButton from '../components/SimpleButton';
 import TxDetailsModal from '../components/TxDetailsModal';
 import OfflineBar from '../components/OfflineBar';
-import { HathorList } from '../components/HathorList';
-import { Strong, str2jsx, getLightBackground, renderValue, isTokenNFT } from '../utils';
+import {HathorList} from '../components/HathorList';
+import {
+  Strong,
+  str2jsx,
+  getLightBackground,
+  renderValue,
+  isTokenNFT,
+} from '../utils';
 import chevronUp from '../assets/icons/chevron-up.png';
 import chevronDown from '../assets/icons/chevron-down.png';
 import infoIcon from '../assets/icons/info-circle.png';
-import { IS_MULTI_TOKEN, PRIMARY_COLOR } from '../constants';
-import { fetchMoreHistory, updateTokenHistory } from '../actions';
-
+import {IS_MULTI_TOKEN, PRIMARY_COLOR} from '../constants';
+import {fetchMoreHistory, updateTokenHistory} from '../actions';
 
 /**
  * txList {Array} array with transactions of the selected token
  * balance {Object} object with token balance {'available', 'locked'}
  * selectedToken {string} uid of the selected token
  */
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   txList: state.tokensHistory[state.selectedToken.uid] || [],
-  balance: state.tokensBalance[state.selectedToken.uid] || { available: 0, locked: 0 },
+  balance: state.tokensBalance[state.selectedToken.uid] || {
+    available: 0,
+    locked: 0,
+  },
   selectedToken: state.selectedToken,
   isOnline: state.isOnline,
   network: state.serverInfo.network,
@@ -52,8 +60,9 @@ const mapStateToProps = (state) => ({
   tokenMetadata: state.tokenMetadata,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  updateTokenHistory: (token, history) => dispatch(updateTokenHistory(token, history)),
+const mapDispatchToProps = dispatch => ({
+  updateTokenHistory: (token, history) =>
+    dispatch(updateTokenHistory(token, history)),
 });
 
 class MainScreen extends React.Component {
@@ -77,14 +86,13 @@ class MainScreen extends React.Component {
   });
 
   closeTxDetails = () => {
-    this.setState({ modal: null });
-  }
+    this.setState({modal: null});
+  };
 
-  isNFT = () => (
-    isTokenNFT(get(this.props, 'selectedToken.uid'), this.props.tokenMetadata)
-  )
+  isNFT = () =>
+    isTokenNFT(get(this.props, 'selectedToken.uid'), this.props.tokenMetadata);
 
-  onTxPress = (tx) => {
+  onTxPress = tx => {
     const txDetailsModal = (
       <TxDetailsModal
         tx={tx}
@@ -93,30 +101,42 @@ class MainScreen extends React.Component {
         isNFT={this.isNFT()}
       />
     );
-    this.setState({ modal: txDetailsModal });
-  }
+    this.setState({modal: txDetailsModal});
+  };
 
   tokenInfo = () => {
-    if (this.props.selectedToken.uid !== hathorLib.constants.HATHOR_TOKEN_CONFIG.uid) {
+    if (
+      this.props.selectedToken.uid !==
+      hathorLib.constants.HATHOR_TOKEN_CONFIG.uid
+    ) {
       this.props.navigation.navigate('TokenDetail');
     }
-  }
+  };
 
   render() {
     const renderEmptyHistory = () => (
       <HathorList infinity>
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
           <Strong>{t`No transactions`}</Strong>
-          <Text style={{ marginTop: 8, lineHeight: 20, textAlign: 'center', width: 220 }}>
+          <Text
+            style={{
+              marginTop: 8,
+              lineHeight: 20,
+              textAlign: 'center',
+              width: 220,
+            }}>
             {str2jsx(
               t`|share:Share your address| with friends and start exchanging tokens`,
-              { share: (x, i) => (
-                <Text
-                  key={i}
-                  onPress={() => this.props.navigation.navigate('Receive')}
-                  style={{ color: PRIMARY_COLOR, fontWeight: 'bold' }}
-                >{x}</Text>
-              ) }
+              {
+                share: (x, i) => (
+                  <Text
+                    key={i}
+                    onPress={() => this.props.navigation.navigate('Receive')}
+                    style={{color: PRIMARY_COLOR, fontWeight: 'bold'}}>
+                    {x}
+                  </Text>
+                ),
+              },
             )}
           </Text>
         </View>
@@ -124,7 +144,7 @@ class MainScreen extends React.Component {
     );
 
     const renderTxHistory = () => {
-      if (this.props.txList && (this.props.txList.length > 0)) {
+      if (this.props.txList && this.props.txList.length > 0) {
         return (
           <TxHistoryView
             txList={this.props.txList}
@@ -141,36 +161,37 @@ class MainScreen extends React.Component {
     };
 
     const renderRightElement = () => {
-      if (this.props.selectedToken.uid !== hathorLib.constants.HATHOR_TOKEN_CONFIG.uid) {
-        return (
-          <SimpleButton
-            icon={infoIcon}
-            onPress={this.tokenInfo}
-          />
-        );
+      if (
+        this.props.selectedToken.uid !==
+        hathorLib.constants.HATHOR_TOKEN_CONFIG.uid
+      ) {
+        return <SimpleButton icon={infoIcon} onPress={this.tokenInfo} />;
       }
 
       return null;
     };
 
     return (
-      <SafeAreaView style={{
-        flex: 1, backgroundColor: '#fda800', justifyContent: 'center', alignItems: 'center',
-      }}
-      >
+      <SafeAreaView
+        style={{
+          flex: 1,
+          backgroundColor: '#fda800',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
         {this.state.modal}
-        <HathorHeader
+        {/* <HathorHeader
           title={this.props.selectedToken.name.toUpperCase()}
           onBackPress={IS_MULTI_TOKEN ? () => this.props.navigation.goBack() : null}
           rightElement={renderRightElement()}
-        />
+        /> */}
         <BalanceView
           network={this.props.network}
           balance={this.props.balance}
           token={this.props.selectedToken}
           isNFT={this.isNFT()}
         />
-        <View style={{ flex: 1, justifyContent: 'center', alignSelf: 'stretch' }}>
+        <View style={{flex: 1, justifyContent: 'center', alignSelf: 'stretch'}}>
           {renderTxHistory()}
         </View>
         <OfflineBar />
@@ -180,11 +201,11 @@ class MainScreen extends React.Component {
 }
 
 class TxHistoryView extends React.Component {
-  state = { loading: false, canLoadMore: true };
+  state = {loading: false, canLoadMore: true};
 
-  renderItem = ({ item, index }) => {
-    const isFirst = (index === 0);
-    const isLast = (index === (this.props.txList.length - 1));
+  renderItem = ({item, index}) => {
+    const isFirst = index === 0;
+    const isLast = index === this.props.txList.length - 1;
     return (
       <TxListItem
         item={item}
@@ -195,12 +216,12 @@ class TxHistoryView extends React.Component {
         isNFT={this.props.isNFT}
       />
     );
-  }
+  };
 
   renderFooter = () => {
     if (!this.state.loading) return null;
     return (
-      <View style={{ marginTop: 16 }}>
+      <View style={{marginTop: 16}}>
         <ActivityIndicator />
       </View>
     );
@@ -212,21 +233,23 @@ class TxHistoryView extends React.Component {
       return;
     }
 
-    this.setState({ loading: true });
+    this.setState({loading: true});
     const newHistory = await fetchMoreHistory(
-      this.props.wallet, this.props.token.uid, this.props.txList
+      this.props.wallet,
+      this.props.token.uid,
+      this.props.txList,
     );
     if (newHistory.length) {
       this.props.updateTokenHistory(this.props.token.uid, newHistory);
-      this.setState({ loading: false });
+      this.setState({loading: false});
     } else {
-      this.setState({ canLoadMore: false, loading: false });
+      this.setState({canLoadMore: false, loading: false});
     }
-  }
+  };
 
   render() {
     return (
-      <View style={{ flex: 1, alignSelf: 'stretch' }}>
+      <View style={{flex: 1, alignSelf: 'stretch'}}>
         <FlatList
           data={this.props.txList}
           renderItem={this.renderItem}
@@ -241,7 +264,7 @@ class TxHistoryView extends React.Component {
 }
 
 class TxListItem extends React.Component {
-  state = { timestamp: null };
+  state = {timestamp: null};
 
   style = StyleSheet.create({
     container: {
@@ -250,7 +273,7 @@ class TxListItem extends React.Component {
       marginTop: 0,
       borderColor: '#eee',
       borderBottomWidth: 1,
-      shadowOffset: { height: 2, width: 0 },
+      shadowOffset: {height: 2, width: 0},
       shadowRadius: 4,
       shadowColor: 'black',
       shadowOpacity: 0.08,
@@ -297,29 +320,37 @@ class TxListItem extends React.Component {
     },
   });
 
-  styleVoided = Object.assign({}, this.style, StyleSheet.create({
-    description: {
-      ...this.style.description,
-      color: 'rgba(0, 0, 0, 0.3)',
-    },
-    timestamp: {
-      ...this.style.timestamp,
-      color: 'rgba(0, 0, 0, 0.3)',
-    },
-    balance: {
-      ...this.style.balance,
-      color: 'rgba(0, 0, 0, 0.3)',
-      textDecorationLine: 'line-through',
-    },
-  }));
+  styleVoided = Object.assign(
+    {},
+    this.style,
+    StyleSheet.create({
+      description: {
+        ...this.style.description,
+        color: 'rgba(0, 0, 0, 0.3)',
+      },
+      timestamp: {
+        ...this.style.timestamp,
+        color: 'rgba(0, 0, 0, 0.3)',
+      },
+      balance: {
+        ...this.style.balance,
+        color: 'rgba(0, 0, 0, 0.3)',
+        textDecorationLine: 'line-through',
+      },
+    }),
+  );
 
-  stylePositive = Object.assign({}, this.style, StyleSheet.create({
-    balance: {
-      ...this.style.balance,
-      color: '#0DA0A0',
-      fontWeight: 'bold',
-    },
-  }));
+  stylePositive = Object.assign(
+    {},
+    this.style,
+    StyleSheet.create({
+      balance: {
+        ...this.style.balance,
+        color: '#0DA0A0',
+        fontWeight: 'bold',
+      },
+    }),
+  );
 
   componentDidMount() {
     this.updateTimestamp();
@@ -331,15 +362,15 @@ class TxListItem extends React.Component {
     }
   }
 
-  onItemPress = (item) => {
+  onItemPress = item => {
     this.props.onTxPress(item);
-  }
+  };
 
-  getImage = (item) => {
+  getImage = item => {
     if (item.balance === 0) {
       return <View style={this.style.icon} />;
     }
-    let name; 
+    let name;
     let color;
     const style = [this.style.icon];
     if (item.balance > 0) {
@@ -358,12 +389,13 @@ class TxListItem extends React.Component {
     }
 
     return <IconTabBar style={style} color={color} size={24} name={name} />;
-  }
+  };
 
   getStyle(item) {
     if (item.isVoided) {
       return this.styleVoided;
-    } if (item.balance > 0) {
+    }
+    if (item.balance > 0) {
       return this.stylePositive;
     }
     return this.style;
@@ -376,10 +408,12 @@ class TxListItem extends React.Component {
   updateTimestamp = () => {
     const timestamp = this.props.item.getTimestampCalendar();
     if (timestamp !== this.state.timestamp) {
-      this.setState({ timestamp });
+      this.setState({timestamp});
     }
 
-    const diff = moment.unix(this.props.item.timestamp).diff(moment(), 'days', true);
+    const diff = moment
+      .unix(this.props.item.timestamp)
+      .diff(moment(), 'days', true);
     if (!this.interval && diff >= -6) {
       // Schedule if the transaction timestamp is less than 6 days.
       this.interval = setInterval(this.updateTimestamp, 10000);
@@ -388,10 +422,10 @@ class TxListItem extends React.Component {
       clearInterval(this.interval);
       this.interval = null;
     }
-  }
+  };
 
   render() {
-    const { item } = this.props;
+    const {item} = this.props;
     const style = this.getStyle(item);
     const image = this.getImage(item);
 
@@ -408,17 +442,21 @@ class TxListItem extends React.Component {
 
     const balanceStr = renderValue(item.balance, this.props.isNFT);
     const description = item.getDescription(this.props.token);
-    const { timestamp } = this.state;
+    const {timestamp} = this.state;
     return (
       <View style={style.container}>
-        <TouchableHighlight style={touchStyle} onPress={() => this.onItemPress(item)}>
+        <TouchableHighlight
+          style={touchStyle}
+          onPress={() => this.onItemPress(item)}>
           <View style={viewStyle}>
             {image}
             <View style={style.middleView}>
               <Text style={style.description}>{description}</Text>
               <Text style={style.timestamp}>{timestamp}</Text>
             </View>
-            <Text style={style.balance} numberOfLines={1}>{balanceStr}</Text>
+            <Text style={style.balance} numberOfLines={1}>
+              {balanceStr}
+            </Text>
           </View>
         </TouchableHighlight>
       </View>
@@ -439,7 +477,7 @@ class BalanceView extends React.Component {
       alignItems: 'center',
     },
     view: {
-      paddingTop: 32,
+      paddingTop: 10,
       paddingLeft: 54,
       paddingRight: 54,
     },
@@ -449,7 +487,8 @@ class BalanceView extends React.Component {
       fontWeight: 'bold',
     },
     balanceAvailable: {
-      fontSize: 32,
+      paddingTop: 1,
+      fontSize: 55,
       fontWeight: 'bold',
     },
     text1: {
@@ -457,6 +496,41 @@ class BalanceView extends React.Component {
       fontSize: 12,
       fontWeight: 'bold',
       color: 'rgba(0, 0, 0, 0.5)',
+    },
+    textSaldo: {
+      paddingTop: 3,
+      fontSize: 18,
+      fontWeight: 'bold',
+      color: '#202020',
+    },
+    textSymbol: {
+      paddingBottom: 10,
+      fontSize: 18,
+      fontWeight: 'bold',
+      color: '#202020',
+    },
+    containerReais: {
+      paddingBottom: 5,      
+      fontWeight: 'bold',
+      width: 200,
+      height: 45,
+      backgroundColor: '#fada15',
+      borderRadius: 25,
+    },
+    textReais: {      
+      fontSize: 18,
+      fontWeight: 'bold',         
+      borderRadius: 25,
+      alignSelf: 'center',
+      paddingTop: 9
+    },
+    textWelcome: {      
+      fontSize: 18,
+      fontWeight: 'bold',         
+      borderRadius: 25,
+      alignSelf: 'center',
+      paddingTop: 9,
+      paddingBottom: 9
     },
     expandButton: {
       marginTop: 24,
@@ -476,76 +550,95 @@ class BalanceView extends React.Component {
   });
 
   toggleExpanded = () => {
-    this.setState((prevState) => ({ isExpanded: !prevState.isExpanded }));
-  }
+    this.setState(prevState => ({isExpanded: !prevState.isExpanded}));
+  };
 
-  renderExpanded() {
-    const availableStr = renderValue(this.props.balance.available, this.props.isNFT);
-    const lockedStr = renderValue(this.props.balance.locked, this.props.isNFT);
-    const { network, token } = this.props;
-    const { style } = this;
-    return (
-      <View style={style.center}>
-        <Text
-          style={style.balanceAvailable}
-          adjustsFontSizeToFit
-          minimumFontScale={0.5}
-          numberOfLines={1}
-        >
-          {`${availableStr} ${token.symbol}`}
-        </Text>
-        <Text style={style.text1}>{t`Available Balance`}</Text>
-        <Text
-          style={style.balanceLocked}
-          adjustsFontSizeToFit
-          minimumFontScale={0.5}
-          numberOfLines={1}
-        >
-          {`${lockedStr} ${token.symbol}`}
-        </Text>
-        <Text style={style.text1}>{t`Locked`}</Text>
-        <View style={style.networkView}>
-          <Text style={style.networkText}>{network}</Text>
-        </View>
-        <Image style={style.expandButton} source={chevronUp} width={12} height={7} />
-      </View>
-    );
-  }
+  // renderExpanded() {
+  //   const availableStr = renderValue(this.props.balance.available, this.props.isNFT);
+  //   const lockedStr = renderValue(this.props.balance.locked, this.props.isNFT);
+  //   const { network, token } = this.props;
+  //   const { style } = this;
+  //   return (
+  //     <View style={style.center}>
+  //       <Text style={style.textSaldo}>{`Saldo`}</Text>
+  //       <Text
+  //         style={style.balanceAvailable}
+  //         adjustsFontSizeToFit
+  //         minimumFontScale={0.5}
+  //         numberOfLines={1}
+  //       >
+  //         {`${availableStr} ${token.symbol}`}
+  //       </Text>
+  //       {/* <Text style={style.text1}>{t`Available Balance`}</Text> */}
+  //       {/* <Text
+  //         style={style.balanceLocked}
+  //         adjustsFontSizeToFit
+  //         minimumFontScale={0.5}
+  //         numberOfLines={1}
+  //       >
+  //         {`${lockedStr} ${token.symbol}`}
+  //       </Text>
+  //       <Text style={style.text1}>{t`Locked`}</Text> */}
+  //       <View style={style.networkView}>
+  //         <Text style={style.networkText}>{network}</Text>
+  //       </View>
+  //       <Image style={style.expandButton} source={chevronUp} width={12} height={7} />
+  //     </View>
+  //   );
+  // }
 
   renderSimple() {
-    const availableStr = renderValue(this.props.balance.available, this.props.isNFT);
-    const { token } = this.props;
-    const { style } = this;
+    const availableStr = renderValue(
+      this.props.balance.available,
+      this.props.isNFT,
+    );
+    const {token} = this.props;
+    const {style} = this;
     return (
       <View style={style.center}>
+        <Text style={style.textSaldo}>{`Saldo`}</Text>
         <Text
           style={style.balanceAvailable}
           adjustsFontSizeToFit
           minimumFontScale={0.5}
-          numberOfLines={1}
-        >
-          {`${availableStr} ${token.symbol}`}
+          numberOfLines={1}>
+          {`${availableStr}`}
         </Text>
-        <Text style={style.text1}>{t`Available Balance`}</Text>
-        <Image style={style.expandButton} source={chevronDown} width={12} height={7} />
+        <Text
+          style={style.textSymbol}
+          adjustsFontSizeToFit
+          minimumFontScale={0.5}
+          numberOfLines={1}>
+          {`${token.symbol}`}
+        </Text>
+        <View style={style.containerReais}>
+          <Text style={style.textReais}>
+            {`Valor atual: `}
+            {`R$`}
+            {availableStr}
+          </Text>
+        </View>
+        <View>
+          <Text style={style.textWelcome}>{`Bem vindo, Athus!`}</Text>
+        </View>
+        {/* <Text style={style.text1}>{t`Available Balance`}</Text> */}
+        {/* <Image style={style.expandButton} source={chevronDown} width={12} height={7} /> */}
       </View>
     );
   }
 
   render() {
-    const { style } = this;
+    const {style} = this;
     return (
-      <TouchableWithoutFeedback style={style.toucharea} onPress={this.toggleExpanded}>
+      <TouchableWithoutFeedback
+        style={style.toucharea}
+        onPress={this.toggleExpanded}>
         <View style={style.view}>
-          {!this.state.isExpanded
-            ? this.renderSimple()
-            : this.renderExpanded()
-          }
+          {!this.state.isExpanded ? this.renderSimple() : this.renderExpanded()}
         </View>
       </TouchableWithoutFeedback>
     );
   }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainScreen);
