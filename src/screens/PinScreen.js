@@ -57,13 +57,13 @@ class PinScreen extends React.Component {
      */
     this.state = {
       pin: '',
-      pinColor: 'black',
+      pinColor: '#E39B14',
       error: null,
     };
 
     this.canCancel = false;
-    this.screenText = t`Enter your PIN Code `;
-    this.biometryText = t`Unlock Hathor Wallet`;
+    this.screenText = `Digite seu PIN`;
+    this.biometryText = `Desbloquear Profito Wallet`;
     if (!this.props.isLockScreen) {
       this.canCancel = props.navigation.getParam('canCancel', this.canCancel);
       this.screenText = props.navigation.getParam('screenText', this.screenText);
@@ -86,7 +86,7 @@ class PinScreen extends React.Component {
     }
 
     this.willFocusEvent = this.props.navigation.addListener('willFocus', () => {
-      this.setState({ pin: '', pinColor: 'black', error: null });
+      this.setState({ pin: '', pinColor: '#E39B14', error: null });
     });
   }
 
@@ -167,7 +167,7 @@ class PinScreen extends React.Component {
     if (text.length === PIN_SIZE) {
       setTimeout(() => this.validatePin(text), 300);
     }
-    this.setState({ pin: text, pinColor: 'black', error: null });
+    this.setState({ pin: text, pinColor: '#E39B14', error: null });
   }
 
   validatePin = (pin) => {
@@ -179,7 +179,7 @@ class PinScreen extends React.Component {
         hathorLib.wallet.getWalletWords(pin);
 
         if (!hathorLib.wallet.wordsValid(pin)) {
-          throw new Error('Words decrypted with pin are invalid');
+          throw new Error('Palavras inválidas');
         }
 
         this.dismiss(pin);
@@ -217,9 +217,9 @@ class PinScreen extends React.Component {
   removeOneChar = () => {
     const pin = this.state.pin.slice(0, -1);
     if (pin.length === 0) {
-      this.setState({ pin: '', error: t`Incorrect PIN Code. Try again.` });
+      this.setState({ pin: '', error: `PIN incorreto. Tente novamente.` });
     } else {
-      this.setState({ pin, pinColor: '#DE3535' });
+      this.setState({ pin, pinColor: '#DE1010' });
       setTimeout(() => this.removeOneChar(), 25);
     }
   }
@@ -229,10 +229,10 @@ class PinScreen extends React.Component {
       let title;
       let onPress;
       if (this.canCancel) {
-        title = t`Cancel`;
+        title = `Cancelar`;
         onPress = () => this.props.navigation.goBack();
       } else {
-        title = t`Reset wallet`;
+        title = `Nova carteira`;
         onPress = () => this.goToReset();
       }
       return (
@@ -248,21 +248,23 @@ class PinScreen extends React.Component {
     };
 
     return (
-      <SafeAreaView style={{ flex: 1, alignItems: 'center', marginHorizontal: 16 }}>
+      <SafeAreaView style={{ flex: 1, alignItems: 'center', marginHorizontal: 16, backgroundColor: '#202020' }}>
         <View style={{ marginVertical: 16, alignItems: 'center', height: 21, width: 120 }}>
           <Logo
-            style={{ height: 21, width: 120 }}
+            style={{ height: 45, width: 150 }}
           />
         </View>
-        <Text style={{ marginTop: 32, marginBottom: 16 }}>{this.screenText}</Text>
+        <Text style={{ marginTop: 32, marginBottom: 16, color: '#E39B14' }}>{this.screenText}</Text>
         <PinInput
           maxLength={PIN_SIZE}
           color={this.state.pinColor}
           value={this.state.pin}
           onChangeText={this.onChangeText}
-          error={this.state.error}
+          error={this.state.error}          
         />
-        {renderButton()}
+        <View style={{ marginBottom: 30 }}>
+        {/* {renderButton()} */}
+        </View>
       </SafeAreaView>
     );
   }

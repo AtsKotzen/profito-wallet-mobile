@@ -220,7 +220,7 @@ class _AppStackWrapper extends React.Component {
 
   style = StyleSheet.create({
     auxView: {
-      backgroundColor: 'white',
+      backgroundColor: '#202020',
       position: 'absolute',
       top: 0,
       bottom: 0,

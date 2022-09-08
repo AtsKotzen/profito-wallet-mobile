@@ -85,14 +85,14 @@ class LoadHistoryScreen extends React.Component {
     const renderLoading = () => (
       <View style={{ alignItems: 'center' }}>
         <Spinner size={48} animating />
-        <Text style={[styles.text, { marginTop: 32, color: 'rgba(0, 0, 0, 0.5)' }]}>
-          {t`Loading your transactions`}
+        <Text style={[styles.text, { marginTop: 32, color: '#E39B14' }]}>
+          {`Carregando suas transações`}
         </Text>
         <TextFmt style={[styles.text, { marginTop: 24 }]}>
-          {t`**${this.props.loadedData.transactions} transactions** found`}
+          {`**${this.props.loadedData.transactions} transações ** encontradas`}
         </TextFmt>
         <TextFmt style={styles.text}>
-          {t`**${this.props.loadedData.addresses} addresses** found`}
+          {t`**${this.props.loadedData.addresses} endereços** encontrados`}
         </TextFmt>
       </View>
     );
@@ -111,6 +111,7 @@ const styles = StyleSheet.create({
     lineHeight: 20,
     textAlign: 'center',
     marginTop: 16,
+    color: '#E39B14'
   },
 });
 

@@ -24,7 +24,7 @@ import {get} from 'lodash';
 import moment from 'moment';
 import hathorLib from '@hathor/wallet-lib';
 import IconTabBar from '../icon-font';
-import HathorHeader from '../components/HathorHeader';
+//import HathorHeader from '../components/HathorHeader';
 import SimpleButton from '../components/SimpleButton';
 import TxDetailsModal from '../components/TxDetailsModal';
 import OfflineBar from '../components/OfflineBar';
@@ -160,16 +160,16 @@ class MainScreen extends React.Component {
       return renderEmptyHistory();
     };
 
-    const renderRightElement = () => {
-      if (
-        this.props.selectedToken.uid !==
-        hathorLib.constants.HATHOR_TOKEN_CONFIG.uid
-      ) {
-        return <SimpleButton icon={infoIcon} onPress={this.tokenInfo} />;
-      }
+    // const renderRightElement = () => {
+    //   if (
+    //     this.props.selectedToken.uid !==
+    //     hathorLib.constants.HATHOR_TOKEN_CONFIG.uid
+    //   ) {
+    //     return <SimpleButton icon={infoIcon} onPress={this.tokenInfo} />;
+    //   }
 
-      return null;
-    };
+    //   return null;
+    // };
 
     return (
       <SafeAreaView
@@ -277,6 +277,7 @@ class TxListItem extends React.Component {
       shadowRadius: 4,
       shadowColor: 'black',
       shadowOpacity: 0.08,
+      
     },
     view: {
       flexDirection: 'row',
@@ -553,39 +554,26 @@ class BalanceView extends React.Component {
     this.setState(prevState => ({isExpanded: !prevState.isExpanded}));
   };
 
-  // renderExpanded() {
-  //   const availableStr = renderValue(this.props.balance.available, this.props.isNFT);
-  //   const lockedStr = renderValue(this.props.balance.locked, this.props.isNFT);
-  //   const { network, token } = this.props;
-  //   const { style } = this;
-  //   return (
-  //     <View style={style.center}>
-  //       <Text style={style.textSaldo}>{`Saldo`}</Text>
-  //       <Text
-  //         style={style.balanceAvailable}
-  //         adjustsFontSizeToFit
-  //         minimumFontScale={0.5}
-  //         numberOfLines={1}
-  //       >
-  //         {`${availableStr} ${token.symbol}`}
-  //       </Text>
-  //       {/* <Text style={style.text1}>{t`Available Balance`}</Text> */}
-  //       {/* <Text
-  //         style={style.balanceLocked}
-  //         adjustsFontSizeToFit
-  //         minimumFontScale={0.5}
-  //         numberOfLines={1}
-  //       >
-  //         {`${lockedStr} ${token.symbol}`}
-  //       </Text>
-  //       <Text style={style.text1}>{t`Locked`}</Text> */}
-  //       <View style={style.networkView}>
-  //         <Text style={style.networkText}>{network}</Text>
-  //       </View>
-  //       <Image style={style.expandButton} source={chevronUp} width={12} height={7} />
-  //     </View>
-  //   );
-  // }
+  renderExpanded() {
+    const availableStr = renderValue(this.props.balance.available, this.props.isNFT);
+    //const lockedStr = renderValue(this.props.balance.locked, this.props.isNFT);
+    const { network, token } = this.props;
+    const { style } = this;
+    return (
+      <View style={style.center}>
+        <Text style={style.textSaldo}>{`Saldo`}</Text>
+        <Text
+          style={style.balanceAvailable}
+          adjustsFontSizeToFit
+          minimumFontScale={0.5}
+          numberOfLines={1}
+        >
+          {`${availableStr} ${token.symbol}`}
+        </Text>      
+        <Image style={style.expandButton} source={chevronDown} width={12} height={7} />
+      </View>
+    );
+  }
 
   renderSimple() {
     const availableStr = renderValue(
@@ -621,8 +609,7 @@ class BalanceView extends React.Component {
         <View>
           <Text style={style.textWelcome}>{`Bem vindo, Athus!`}</Text>
         </View>
-        {/* <Text style={style.text1}>{t`Available Balance`}</Text> */}
-        {/* <Image style={style.expandButton} source={chevronDown} width={12} height={7} /> */}
+        <Image style={style.expandButton} source={chevronUp} width={12} height={7} />
       </View>
     );
   }

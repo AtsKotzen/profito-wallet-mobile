@@ -12,7 +12,7 @@ import NumPad from './NumPad';
 
 class PinInput extends React.Component {
   static defaultProps = {
-    color: 'black',
+    color: '#E39B14',
   };
 
   getMarker = (index, isFilled) => {
@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
   markers: {
     flexDirection: 'row',
     justifyContent: 'center',
+  
   },
   marker: {
     width: 24,
@@ -63,6 +64,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     borderWidth: 1,
     margin: 8,
+    
   },
   error: {
     color: '#DE3535',
@@ -72,7 +74,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
-    justifyContent: 'space-between',
+    justifyContent: 'space-between',   
   },
 });
 

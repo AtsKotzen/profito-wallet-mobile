@@ -111,7 +111,7 @@ NumPadButton.propTypes = {
 const style = StyleSheet.create({
   row: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-around',    
   },
   buttonStyle: {
     justifyContent: 'center',
@@ -122,10 +122,12 @@ const style = StyleSheet.create({
   numberStyle: {
     fontSize: 25,
     lineHeight: 28,
+    color: '#E39B14'
   },
   charStyle: {
     fontSize: 10,
     lineHeight: 12,
+    color: '#E39B14'
   },
 });
 
