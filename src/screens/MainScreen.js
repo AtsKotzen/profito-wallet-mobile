@@ -347,7 +347,7 @@ class TxListItem extends React.Component {
     StyleSheet.create({
       balance: {
         ...this.style.balance,
-        color: '#0DA0A0',
+        color: '#E19B41',
         fontWeight: 'bold',
       },
     }),
@@ -376,7 +376,7 @@ class TxListItem extends React.Component {
     const style = [this.style.icon];
     if (item.balance > 0) {
       name = 'icReceive';
-      color = '#0DA0A0';
+      color = '#E19B41';
     } else if (item.balance < 0) {
       name = 'icSend';
       color = 'black';

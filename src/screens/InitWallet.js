@@ -81,8 +81,8 @@ class WelcomeScreen extends React.Component {
           </View>
           <View style={this.style.switchView}>
             <Switch
-              onValueChange={this.toggleSwitch}
-              trackColor={{true: PRIMARY_COLOR}}
+              onValueChange={this.toggleSwitch}              
+              trackColor={{ false: "#767577", true: "#E19B41" }}              
               value={this.state.switchValue}
             />
             <Text style={this.style.switchText}>
