@@ -9,7 +9,7 @@ import React from 'react';
 import { Animated, Easing } from 'react-native';
 import PropTypes from 'prop-types';
 
-import loadingIcon from '../assets/images/icLoadingBig.png';
+import loadingIcon from '../assets/images/profito-logo-laranja.png';
 
 class Spinner extends React.Component {
   static defaultProps = {
