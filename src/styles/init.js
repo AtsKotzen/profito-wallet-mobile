@@ -22,11 +22,13 @@ const baseStyle = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
     marginBottom: 16,
+    color: '#E39B14'
   },
   text: {
     fontSize: 16,
     lineHeight: 24,
     marginBottom: 24,
+    color: '#E39B14'
   },
   link: {
     color: PRIMARY_COLOR,

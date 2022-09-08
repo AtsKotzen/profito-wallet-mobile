@@ -63,14 +63,14 @@ const style = StyleSheet.create({
   wrapper: {
     height: 48,
     borderRadius: 8,
-    backgroundColor: '#000',
+    backgroundColor: '#E39B14',
     alignSelf: 'stretch',
   },
   wrapperDisabled: {
     backgroundColor: 'rgba(0, 0, 0, 0.05)',
   },
   wrapperSecondary: {
-    backgroundColor: '#fff',
+    backgroundColor: '#cdc4d1',
     borderColor: '#000',
     borderWidth: 1.5,
   },
@@ -97,7 +97,7 @@ const style = StyleSheet.create({
     color: 'rgba(0, 0, 0, 0.5)',
   },
   textDisabled: {
-    color: 'rgba(0,0,0,0.5)',
+    color: '#cdc4d1',
   },
 });
 

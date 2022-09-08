@@ -38,12 +38,12 @@ export class TxHistory {
   getTimestampCalendar() {
     // See https://momentjs.com/docs/#/displaying/calendar-time/
     return moment.unix(this.timestamp).calendar(null, {
-      sameDay: t`[Today •] HH:mm`,
-      nextDay: t`[Tomorrow •] HH:mm`,
-      nextWeek: t`dddd [•] HH:mm`,
-      lastDay: t`[Yesterday •] HH:mm`,
-      lastWeek: t`[Last] dddd [•] HH:mm`,
-      sameElse: t`DD MMM YYYY [•] HH:mm`,
+      sameDay: `[Hoje •] HH:mm`,
+      nextDay: `[Amanhã •] HH:mm`,
+      nextWeek: `dddd [•] HH:mm`,
+      lastDay: `[Ontem •] HH:mm`,
+      lastWeek: `[Última] dddd [•] HH:mm`,
+      sameElse: `DD MMM YYYY [•] HH:mm`,
     });
   }
 }

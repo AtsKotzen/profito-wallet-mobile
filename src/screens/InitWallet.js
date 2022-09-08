@@ -19,72 +19,81 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import { t } from 'ttag';
+import {t} from 'ttag';
 import NewHathorButton from '../components/NewHathorButton';
 import HathorHeader from '../components/HathorHeader';
 import TextFmt from '../components/TextFmt';
 
 import baseStyle from '../styles/init';
-import { Link, str2jsx } from '../utils';
+import {Link, str2jsx} from '../utils';
 
-import { PRIMARY_COLOR } from '../constants';
+import {PRIMARY_COLOR} from '../constants';
 
 class WelcomeScreen extends React.Component {
-  state = { switchValue: false };
+  state = {switchValue: false};
 
   style = Object.assign({}, baseStyle, StyleSheet.create({
-    switchView: {
-      flexDirection: 'row',
-    },
-    switchText: {
-      paddingLeft: 16,
-      fontSize: 14,
-      lineHeight: 18,
-      flex: 1,
-    },
-  }));
+      switchView: {
+        flexDirection: 'row',
+      },
+      switchText: {
+        paddingLeft: 16,
+        fontSize: 14,
+        lineHeight: 18,
+        flex: 1,
+        color: '#E39B14',
+      },
+    }),
+  );
 
-  toggleSwitch = (value) => {
-    this.setState({ switchValue: value });
-  }
+  toggleSwitch = value => {
+    this.setState({switchValue: value});
+  };
 
   render() {
     return (
-      <SafeAreaView style={{ flex: 1 }}>
+      <SafeAreaView
+        style={{flex: 1, backgroundColor: '#202020', paddingTop: 25}}>
         <HathorHeader withLogo />
         <View style={this.style.container}>
-          <Text style={this.style.title}>{t`Welcome to Profito Wallet!`}</Text>
-          
+          <Text style={this.style.title}>{`Bem vindo a Profito Club!`}</Text>
           <View>
+            <Text style={this.style.text}>
+              {`Durante os próximos passos vamos criar sua carteira digital.`}
+            </Text>
             <TextFmt style={this.style.text}>
-              {t`This wallet is connected to the **mainnet**.`}
+              {`**Relaxe** enquanto configuramos tudo pra você!`}
             </TextFmt>
             <Text style={this.style.text}>
-              {t`A mobile wallet is not the safest place to store your tokens.
-              So, we advise you to keep only a small amount of tokens here, such as pocket money.`}
-            </Text>
-            <Text style={this.style.text}>
               {str2jsx(
-                t`For further information, check out our website |link:https://hathor.network/|.`,
-                { link: (x, i) => <Link key={i} href='https://hathor.network/'>{x}</Link> }
+                `Para maiores informações, acesse o nosso site |link:https://profitoclub.com|.`,
+                {
+                  link: (x, i) => (
+                    <Link
+                      key={i}
+                      href="https://www.instagram.com/profitoclub//">
+                      {x}
+                    </Link>
+                  ),
+                },
               )}
             </Text>
           </View>
           <View style={this.style.switchView}>
             <Switch
               onValueChange={this.toggleSwitch}
-              trackColor={{ true: PRIMARY_COLOR }}
+              trackColor={{true: PRIMARY_COLOR}}
               value={this.state.switchValue}
             />
             <Text style={this.style.switchText}>
-              {t`I understand the risks of using a mobile wallet`}
+              {`Entendo e aceito os termos`}
             </Text>
           </View>
           <View style={this.style.buttonView}>
             <NewHathorButton
               disabled={!this.state.switchValue}
               onPress={() => this.props.navigation.navigate('InitialScreen')}
-              title={t`Start`}
+              title={`Começar`}
             />
           </View>
         </View>
@@ -98,7 +107,7 @@ class InitialScreen extends React.Component {
 
   render() {
     return (
-      <SafeAreaView style={{ flex: 1 }}>
+      <SafeAreaView style={{flex: 1}}>
         <HathorHeader withLogo />
         <View style={this.style.container}>
           <Text style={this.style.title}>{t`To start,`}</Text>
@@ -115,7 +124,7 @@ class InitialScreen extends React.Component {
             <NewHathorButton
               onPress={() => this.props.navigation.navigate('LoadWordsScreen')}
               title={t`Import Wallet`}
-              style={{ marginBottom: 16 }}
+              style={{marginBottom: 16}}
               secondary
             />
             <NewHathorButton
@@ -131,25 +140,31 @@ class InitialScreen extends React.Component {
 
 class NewWordsScreen extends React.Component {
   state = {
-    words: hathorLib.wallet.generateWalletWords(hathorLib.constants.HD_WALLET_ENTROPY),
+    words: hathorLib.wallet.generateWalletWords(
+      hathorLib.constants.HD_WALLET_ENTROPY,
+    ),
   };
 
-  style = Object.assign({}, baseStyle, StyleSheet.create({
-    row: {
-      flexDirection: 'row',
-      flex: 0.5,
-    },
-    item: {
-      flex: 1,
-    },
-    itemNumber: {
-      fontSize: 14,
-    },
-    itemText: {
-      color: '#000',
-      fontSize: 18,
-    },
-  }));
+  style = Object.assign(
+    {},
+    baseStyle,
+    StyleSheet.create({
+      row: {
+        flexDirection: 'row',
+        flex: 0.5,
+      },
+      item: {
+        flex: 1,
+      },
+      itemNumber: {
+        fontSize: 14,
+      },
+      itemText: {
+        color: '#000',
+        fontSize: 18,
+      },
+    }),
+  );
 
   render() {
     const wordsArr = this.state.words ? this.state.words.split(' ') : [];
@@ -164,18 +179,19 @@ class NewWordsScreen extends React.Component {
       return data;
     };
 
-    const renderWordsRow = (index) => {
+    const renderWordsRow = index => {
       const startIndex = index * wordsPerRow;
-      const wordsToRender = wordsArr.slice(startIndex, startIndex + wordsPerRow);
+      const wordsToRender = wordsArr.slice(
+        startIndex,
+        startIndex + wordsPerRow,
+      );
 
       const rows = wordsToRender.map((word, idx) => {
         const realIndex = startIndex + idx + 1;
         return (
           <View key={`word-${realIndex}`} style={this.style.item}>
             <Text>
-              <Text style={this.style.itemNumber}>
-                {realIndex}.
-              </Text>
+              <Text style={this.style.itemNumber}>{realIndex}.</Text>
               <Text style={this.style.itemText}> {word}</Text>
             </Text>
           </View>
@@ -190,14 +206,15 @@ class NewWordsScreen extends React.Component {
     };
 
     return (
-      <SafeAreaView style={{ flex: 1 }}>
+      <SafeAreaView style={{flex: 1}}>
         <HathorHeader
           withLogo
           onBackPress={() => this.props.navigation.goBack()}
         />
         <View style={this.style.container}>
           <View>
-            <Text style={this.style.title}>{t`Your wallet has been created!`}</Text>
+            <Text
+              style={this.style.title}>{t`Your wallet has been created!`}</Text>
             <TextFmt style={this.style.text}>
               {t`You must **do a backup** and save the words below **in the same order they appear**.`}
             </TextFmt>
@@ -205,7 +222,11 @@ class NewWordsScreen extends React.Component {
           {renderWords()}
           <View style={this.style.buttonView}>
             <NewHathorButton
-              onPress={() => this.props.navigation.navigate('BackupWords', { words: this.state.words })}
+              onPress={() =>
+                this.props.navigation.navigate('BackupWords', {
+                  words: this.state.words,
+                })
+              }
               title={t`Next`}
             />
           </View>
@@ -224,26 +245,30 @@ class LoadWordsScreen extends React.Component {
 
   numberOfWords = 24;
 
-  style = Object.assign({}, baseStyle, StyleSheet.create({
-    inputView: {
-      marginTop: 16,
-      marginBottom: 16,
-    },
-    label: {
-      fontSize: 12,
-      color: 'rgba(0, 0, 0, 0.5)',
-      marginTop: 8,
-      marginBottom: 8,
-    },
-    input: {
-      fontSize: 16,
-      lineHeight: 24,
-      borderColor: '#EEEEEE',
-      borderBottomWidth: 1,
-    },
-  }));
+  style = Object.assign(
+    {},
+    baseStyle,
+    StyleSheet.create({
+      inputView: {
+        marginTop: 16,
+        marginBottom: 16,
+      },
+      label: {
+        fontSize: 12,
+        color: 'rgba(0, 0, 0, 0.5)',
+        marginTop: 8,
+        marginBottom: 8,
+      },
+      input: {
+        fontSize: 16,
+        lineHeight: 24,
+        borderColor: '#EEEEEE',
+        borderBottomWidth: 1,
+      },
+    }),
+  );
 
-  onChangeText = (text) => {
+  onChangeText = text => {
     const words = text.trim(/\s+/);
     let errorMessage = '';
     let isValid = false;
@@ -255,7 +280,9 @@ class LoadWordsScreen extends React.Component {
         if (e instanceof hathorLib.errors.InvalidWords) {
           errorMessage = e.message;
           if (e.invalidWords && e.invalidWords.length > 0) {
-            errorMessage = `${errorMessage} List of invalid words: ${e.invalidWords.join(', ')}.`;
+            errorMessage = `${errorMessage} List of invalid words: ${e.invalidWords.join(
+              ', ',
+            )}.`;
           }
         } else {
           throw e;
@@ -264,31 +291,33 @@ class LoadWordsScreen extends React.Component {
     }
 
     const wordsArr = words.split(/\s+/);
-    const nonEmptyWords = wordsArr.filter((value) => value.length !== 0);
-    const nonEmptyWordsLowerCase = nonEmptyWords.map((value) => value.toLowerCase());
+    const nonEmptyWords = wordsArr.filter(value => value.length !== 0);
+    const nonEmptyWordsLowerCase = nonEmptyWords.map(value =>
+      value.toLowerCase(),
+    );
     this.setState({
       words: nonEmptyWordsLowerCase,
       errorMessage,
       isValid,
     });
-  }
+  };
 
   loadClicked = () => {
     Keyboard.dismiss();
     const words = this.state.words.join(' ');
-    this.setState({ errorMessage: '' });
+    this.setState({errorMessage: ''});
     const result = hathorLib.wallet.wordsValid(words);
     if (result.valid) {
-      this.props.navigation.navigate('ChoosePinScreen', { words });
+      this.props.navigation.navigate('ChoosePinScreen', {words});
     } else {
-      this.setState({ errorMessage: result.message });
+      this.setState({errorMessage: result.message});
     }
-  }
+  };
 
   render() {
     return (
-      <KeyboardAvoidingView behavior='padding' style={{ flex: 1 }}>
-        <SafeAreaView style={{ flex: 1 }}>
+      <KeyboardAvoidingView behavior="padding" style={{flex: 1}}>
+        <SafeAreaView style={{flex: 1}}>
           <HathorHeader
             withLogo
             onBackPress={() => this.props.navigation.goBack()}
@@ -303,31 +332,29 @@ class LoadWordsScreen extends React.Component {
                 <Text style={this.style.label}>{t`Words`}</Text>
                 <TextInput
                   style={this.style.input}
-                  textAlignVertical='top'
+                  textAlignVertical="top"
                   onChangeText={this.onChangeText}
                   placeholder={t`Enter your seed words separated by space`}
                   multiline
-                  maxHeight='80%'
-                  keyboardAppearance='dark'
-                  returnKeyType='done'
+                  maxHeight="80%"
+                  keyboardAppearance="dark"
+                  returnKeyType="done"
                   enablesReturnKeyAutomatically
                   autoFocus
                   onSubmitEditing={this.loadClicked}
                   blurOnSubmit
                 />
                 <Text style={this.style.label}>
-                  {this.state.words.length}
-                  /
-                  {this.numberOfWords}
+                  {this.state.words.length}/{this.numberOfWords}
                 </Text>
-                <Text style={{ color: 'red' }}>{this.state.errorMessage}</Text>
+                <Text style={{color: 'red'}}>{this.state.errorMessage}</Text>
               </View>
               <View style={this.style.buttonView}>
                 <NewHathorButton
                   onPress={this.loadClicked}
                   disabled={!this.state.isValid}
                   title={t`Next`}
-                  style={{ marginTop: 8 }}
+                  style={{marginTop: 8}}
                 />
               </View>
             </View>
@@ -338,6 +365,4 @@ class LoadWordsScreen extends React.Component {
   }
 }
 
-export {
-  WelcomeScreen, InitialScreen, LoadWordsScreen, NewWordsScreen,
-};
+export {WelcomeScreen, InitialScreen, LoadWordsScreen, NewWordsScreen};
