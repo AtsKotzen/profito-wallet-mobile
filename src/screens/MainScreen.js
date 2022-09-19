@@ -25,7 +25,7 @@ import moment from 'moment';
 import hathorLib from '@hathor/wallet-lib';
 import IconTabBar from '../icon-font';
 //import HathorHeader from '../components/HathorHeader';
-import SimpleButton from '../components/SimpleButton';
+//import SimpleButton from '../components/SimpleButton';
 import TxDetailsModal from '../components/TxDetailsModal';
 import OfflineBar from '../components/OfflineBar';
 import {HathorList} from '../components/HathorList';
@@ -38,7 +38,7 @@ import {
 } from '../utils';
 import chevronUp from '../assets/icons/chevron-up.png';
 import chevronDown from '../assets/icons/chevron-down.png';
-import infoIcon from '../assets/icons/info-circle.png';
+//import infoIcon from '../assets/icons/info-circle.png';
 import {IS_MULTI_TOKEN, PRIMARY_COLOR} from '../constants';
 import {fetchMoreHistory, updateTokenHistory} from '../actions';
 
@@ -175,7 +175,7 @@ class MainScreen extends React.Component {
       <SafeAreaView
         style={{
           flex: 1,
-          backgroundColor: '#fda800',
+          backgroundColor: '#202020',
           justifyContent: 'center',
           alignItems: 'center',
         }}>
@@ -491,6 +491,7 @@ class BalanceView extends React.Component {
       paddingTop: 1,
       fontSize: 55,
       fontWeight: 'bold',
+      color: '#fda800'
     },
     text1: {
       paddingTop: 8,
@@ -502,20 +503,20 @@ class BalanceView extends React.Component {
       paddingTop: 3,
       fontSize: 18,
       fontWeight: 'bold',
-      color: '#202020',
+      color: '#fda800',
     },
     textSymbol: {
       paddingBottom: 10,
       fontSize: 18,
       fontWeight: 'bold',
-      color: '#202020',
+      color: '#fda800',
     },
     containerReais: {
       paddingBottom: 5,      
       fontWeight: 'bold',
       width: 200,
       height: 45,
-      backgroundColor: '#fada15',
+      backgroundColor: '#fda800',
       borderRadius: 25,
     },
     textReais: {      
@@ -523,7 +524,7 @@ class BalanceView extends React.Component {
       fontWeight: 'bold',         
       borderRadius: 25,
       alignSelf: 'center',
-      paddingTop: 9
+      paddingTop: 9      
     },
     textWelcome: {      
       fontSize: 18,
@@ -531,11 +532,12 @@ class BalanceView extends React.Component {
       borderRadius: 25,
       alignSelf: 'center',
       paddingTop: 9,
-      paddingBottom: 9
+      paddingBottom: 9,
+      color: '#fda800'
     },
     expandButton: {
       marginTop: 24,
-      marginBottom: 24,
+      marginBottom: 24     
     },
     networkView: {
       backgroundColor: getLightBackground(0.1),
@@ -570,7 +572,9 @@ class BalanceView extends React.Component {
         >
           {`${availableStr} ${token.symbol}`}
         </Text>      
-        <Image style={style.expandButton} source={chevronDown} width={12} height={7} />
+        <Image style={style.expandButton} source={chevronDown}
+        // width={12} height={7}
+        />
       </View>
     );
   }
@@ -602,14 +606,16 @@ class BalanceView extends React.Component {
         <View style={style.containerReais}>
           <Text style={style.textReais}>
             {`Valor atual: `}
-            {`R$`}
+            {`R$ `}
             {availableStr}
           </Text>
         </View>
         <View>
           <Text style={style.textWelcome}>{`Bem vindo, Athus!`}</Text>
         </View>
-        <Image style={style.expandButton} source={chevronUp} width={12} height={7} />
+        <Image style={style.expandButton} source={chevronUp} 
+        // width={12} height={7} 
+        />
       </View>
     );
   }

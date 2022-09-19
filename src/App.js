@@ -59,13 +59,13 @@ import CreateTokenSymbol from './screens/CreateTokenSymbol';
 import CreateTokenAmount from './screens/CreateTokenAmount';
 import CreateTokenConfirm from './screens/CreateTokenConfirm';
 import CreateTokenDetail from './screens/CreateTokenDetail';
-import Login from './screens/Login';
+import Signup from './screens/Signup';
 import ErrorModal from './components/ErrorModal';
 
 
 const InitStack = createStackNavigator(
   {
-    Login,
+    Signup,
     WelcomeScreen,
     InitialScreen,
     NewWordsScreen,
@@ -74,19 +74,19 @@ const InitStack = createStackNavigator(
     ChoosePinScreen,
   },
   {
-    initialRouteName: 'Login',
+    initialRouteName: 'Signup',
     headerMode: 'none',
   }
 );
 
 const DashboardStack = createStackNavigator(
   {
-    Login,
+    Signup,
     Dashboard,
     MainScreen,
   },
   {
-    initialRouteName: 'Login',
+    initialRouteName: 'Signup',
     headerMode: 'none',
   },
 );

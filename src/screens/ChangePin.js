@@ -139,7 +139,7 @@ class ChangePin extends React.Component {
 
   validatePin3 = (text) => {
     if (this.state.pin2 === text) {
-      this.setState({ pin3Color: '#0DA0A0' });
+      this.setState({ pin3Color: '#E39B14' });
       this.executeChangePin();
     } else {
       this.removeOneChar('pin3', 'pin3Color', t`PIN codes don't match.`);
@@ -194,7 +194,7 @@ class ChangePin extends React.Component {
       <PinInput
         maxLength={PIN_SIZE}
         onChangeText={this.onChangePin2}
-        color={(this.state.pin2.length < PIN_SIZE ? 'black' : '#0DA0A0')}
+        color={(this.state.pin2.length < PIN_SIZE ? 'black' : '#E39B14')}
         value={this.state.pin2}
         error={this.state.error}
       />

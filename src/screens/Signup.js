@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import HathorHeader from '../components/HathorHeader';
 import NavigationService from '../NavigationService';
 
-export default class Login extends Component {
+export default class Signup extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -29,7 +29,7 @@ export default class Login extends Component {
           <Button
             color={'#fda800'}
             title={`Criar conta`}
-            onPress={login}
+            onPress={signup}
           />
           {/* <Text style={styles.text}>Ainda não tem uma conta?</Text>
           <Text style={styles.link}>Cadastre-se</Text> */}
@@ -40,7 +40,7 @@ export default class Login extends Component {
   }
 }
 
-const login = () => {
+const signup = () => {
   NavigationService.navigate('WelcomeScreen')
 }
 

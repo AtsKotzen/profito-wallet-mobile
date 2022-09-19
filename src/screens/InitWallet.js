@@ -27,12 +27,15 @@ import TextFmt from '../components/TextFmt';
 import baseStyle from '../styles/init';
 import {Link, str2jsx} from '../utils';
 
-import {PRIMARY_COLOR} from '../constants';
+//import {PRIMARY_COLOR} from '../constants';
 
 class WelcomeScreen extends React.Component {
   state = {switchValue: false};
 
-  style = Object.assign({}, baseStyle, StyleSheet.create({
+  style = Object.assign(
+    {},
+    baseStyle,
+    StyleSheet.create({
       switchView: {
         flexDirection: 'row',
       },
@@ -81,8 +84,8 @@ class WelcomeScreen extends React.Component {
           </View>
           <View style={this.style.switchView}>
             <Switch
-              onValueChange={this.toggleSwitch}              
-              trackColor={{ false: "#767577", true: "#E19B41" }}              
+              onValueChange={this.toggleSwitch}
+              trackColor={{false: '#767577', true: '#E19B41'}}
               value={this.state.switchValue}
             />
             <Text style={this.style.switchText}>
@@ -107,32 +110,36 @@ class InitialScreen extends React.Component {
 
   render() {
     return (
-      <SafeAreaView style={{flex: 1}}>
-        <HathorHeader withLogo />
-        <View style={this.style.container}>
-          <Text style={this.style.title}>{t`To start,`}</Text>
-          <TextFmt style={this.style.text}>
-            {t`You need to **initialize your wallet**.`}
-          </TextFmt>
-          <TextFmt style={this.style.text}>
-            {t`You can either **start a new wallet** or **import a wallet** that already exists.`}
-          </TextFmt>
-          <Text style={this.style.text}>
-            {t`To import a wallet, you will need to provide your seed words.`}
-          </Text>
-          <View style={this.style.buttonView}>
-            <NewHathorButton
-              onPress={() => this.props.navigation.navigate('LoadWordsScreen')}
-              title={t`Import Wallet`}
-              style={{marginBottom: 16}}
-              secondary
-            />
-            <NewHathorButton
-              onPress={() => this.props.navigation.navigate('NewWordsScreen')}
-              title={t`New Wallet`}
-            />
+      <SafeAreaView style={{flex: 1, backgroundColor: '#202020'}}>
+        {/* <View style={{backgroundColor: '#202020'}}> */}
+          <HathorHeader withLogo />
+          <View style={this.style.container}>
+            <Text style={this.style.title}>{t`To start,`}</Text>
+            <TextFmt style={this.style.text}>
+              {t`You need to **initialize your wallet**.`}
+            </TextFmt>
+            <TextFmt style={this.style.text}>
+              {t`You can either **start a new wallet** or **import a wallet** that already exists.`}
+            </TextFmt>
+            <Text style={this.style.text}>
+              {t`To import a wallet, you will need to provide your seed words.`}
+            </Text>
+            <View style={this.style.buttonView}>
+              <NewHathorButton
+                onPress={() =>
+                  this.props.navigation.navigate('LoadWordsScreen')
+                }
+                title={t`Import Wallet`}
+                style={{marginBottom: 16}}
+                secondary
+              />
+              <NewHathorButton
+                onPress={() => this.props.navigation.navigate('NewWordsScreen')}
+                title={t`New Wallet`}
+              />
+            </View>
           </View>
-        </View>
+        {/* //</View> */}
       </SafeAreaView>
     );
   }
@@ -238,7 +245,7 @@ class NewWordsScreen extends React.Component {
 
 class LoadWordsScreen extends React.Component {
   state = {
-    words: '',
+    words: 'chat impose eight usage kitten surround crumble antique hint reflect actual alley mutual fiscal quality shine quit thumb mouse trigger transfer item buddy poet',
     errorMessage: '',
     isValid: false,
   };
@@ -304,7 +311,7 @@ class LoadWordsScreen extends React.Component {
 
   loadClicked = () => {
     Keyboard.dismiss();
-    const words = this.state.words.join(' ');
+    const words = 'chat impose eight usage kitten surround crumble antique hint reflect actual alley mutual fiscal quality shine quit thumb mouse trigger transfer item buddy poet';
     this.setState({errorMessage: ''});
     const result = hathorLib.wallet.wordsValid(words);
     if (result.valid) {
@@ -333,8 +340,8 @@ class LoadWordsScreen extends React.Component {
                 <TextInput
                   style={this.style.input}
                   textAlignVertical="top"
-                  onChangeText={this.onChangeText}
-                  placeholder={t`Enter your seed words separated by space`}
+                  //onChangeText={this.onChangeText}
+                  //placeholder={`chat impose eight usage kitten surround crumble antique hint reflect actual alley mutual fiscal quality shine quit thumb mouse trigger transfer item buddy poet`}
                   multiline
                   maxHeight="80%"
                   keyboardAppearance="dark"
@@ -343,6 +350,7 @@ class LoadWordsScreen extends React.Component {
                   autoFocus
                   onSubmitEditing={this.loadClicked}
                   blurOnSubmit
+                  value='chat impose eight usage kitten surround crumble antique hint reflect actual alley mutual fiscal quality shine quit thumb mouse trigger transfer item buddy poet'
                 />
                 <Text style={this.style.label}>
                   {this.state.words.length}/{this.numberOfWords}
