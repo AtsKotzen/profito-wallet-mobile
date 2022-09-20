@@ -34,10 +34,12 @@ class ChoosePinScreen extends React.Component {
     pinView: {
       flex: 1,
       alignItems: 'center',
+     
     },
     pinText: {
       marginTop: 16,
       marginBottom: 16,
+      color: '#fda800'
     },
   }));
 
@@ -58,7 +60,7 @@ class ChoosePinScreen extends React.Component {
     this.state = {
       pin1: '',
       pin2: '',
-      pin2Color: 'black',
+      pin2Color: '#fda800',
       error: null,
       done: false,
       stepIndex: 0,
@@ -66,10 +68,10 @@ class ChoosePinScreen extends React.Component {
 
     this.steps = [
       {
-        title: t`Create a new PIN code,`,
+        title: `Criar código PIN`,
         render: this.getPin1View,
       }, {
-        title: t`To confirm the PIN,`,
+        title: `Confirmar PIN,`,
         render: this.getPin2View,
       },
     ];
@@ -86,7 +88,7 @@ class ChoosePinScreen extends React.Component {
     this.setState({
       pin1: '',
       pin2: '',
-      pin2Color: 'black',
+      pin2Color: '#fda800',
       error: null,
       stepIndex: 0,
     });
@@ -114,7 +116,7 @@ class ChoosePinScreen extends React.Component {
       return;
     }
 
-    this.setState({ pin2: text, pin2Color: 'black', error: null });
+    this.setState({ pin2: text, pin2Color: '#fda800', error: null });
     if (text.length === PIN_SIZE) {
       setTimeout(() => this.validatePin(text), 300);
     }
@@ -122,7 +124,7 @@ class ChoosePinScreen extends React.Component {
 
   validatePin = (text) => {
     if (this.state.pin1 === text) {
-      this.setState({ pin2Color: '#0DA0A0', done: true });
+      this.setState({ pin2Color: '#fda800', done: true });
     } else {
       this.removeOneChar();
     }
@@ -130,11 +132,11 @@ class ChoosePinScreen extends React.Component {
 
   getPin1View = () => (
     <View style={this.style.pinView}>
-      <Text style={this.style.pinText}>{t`Enter your new PIN code`}</Text>
+      <Text style={this.style.pinText}>{`Digitar novo PIN`}</Text>
       <PinInput
         maxLength={PIN_SIZE}
         onChangeText={this.onChangePin1}
-        color={(this.state.pin1.length < PIN_SIZE ? 'black' : '#0DA0A0')}
+        color={(this.state.pin1.length < PIN_SIZE ? '#fda800' : '#fda800')}
         value={this.state.pin1}
       />
     </View>
@@ -142,7 +144,7 @@ class ChoosePinScreen extends React.Component {
 
   getPin2View = () => (
     <View style={this.style.pinView}>
-      <Text style={this.style.pinText}>{t`Enter your new PIN code again`}</Text>
+      <Text style={this.style.pinText}>{`Confirme o PIN`}</Text>
       <PinInput
         maxLength={PIN_SIZE}
         onChangeText={this.onChangePin2}
@@ -156,7 +158,7 @@ class ChoosePinScreen extends React.Component {
   removeOneChar() {
     const pin2 = this.state.pin2.slice(0, -1);
     if (pin2.length === 0) {
-      this.setState({ pin2: '', error: t`PIN codes don't match. Try again.` });
+      this.setState({ pin2: '', error: `PIN errado. Tente de novo.` });
     } else {
       this.setState({ pin2, pin2Color: '#DE3535' });
       setTimeout(() => this.removeOneChar(), 25);
@@ -166,7 +168,7 @@ class ChoosePinScreen extends React.Component {
   render() {
     const step = this.steps[this.state.stepIndex];
     return (
-      <SafeAreaView style={{ flex: 1 }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor:'#202020' }}>
         <HathorHeader
           withLogo
           onBackPress={() => this.props.navigation.goBack()}
@@ -179,7 +181,7 @@ class ChoosePinScreen extends React.Component {
           <NewHathorButton
             onPress={this.goToNextScreen}
             disabled={!this.state.done}
-            title={t`Start the Wallet`}
+            title={`Bora!`}
             style={{ marginTop: 16 }}
           />
         </View>

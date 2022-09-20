@@ -114,29 +114,29 @@ class InitialScreen extends React.Component {
         {/* <View style={{backgroundColor: '#202020'}}> */}
           <HathorHeader withLogo />
           <View style={this.style.container}>
-            <Text style={this.style.title}>{t`To start,`}</Text>
+            <Text style={this.style.title}>{`Pronto.`}</Text>
             <TextFmt style={this.style.text}>
-              {t`You need to **initialize your wallet**.`}
+              {`Bem vindo à  **Profito Club**.`}
             </TextFmt>
             <TextFmt style={this.style.text}>
-              {t`You can either **start a new wallet** or **import a wallet** that already exists.`}
+              {`Já estamos com tudo **configurado e seguro**.`}
             </TextFmt>
             <Text style={this.style.text}>
-              {t`To import a wallet, you will need to provide your seed words.`}
+              {`A seguir exibiremos a sua frase de recuperação e iniciaremos a sua carteira.`}
             </Text>
             <View style={this.style.buttonView}>
               <NewHathorButton
                 onPress={() =>
                   this.props.navigation.navigate('LoadWordsScreen')
                 }
-                title={t`Import Wallet`}
+                title={t`Iniciar carteira`}
                 style={{marginBottom: 16}}
                 secondary
               />
-              <NewHathorButton
+              {/* <NewHathorButton
                 onPress={() => this.props.navigation.navigate('NewWordsScreen')}
                 title={t`New Wallet`}
-              />
+              /> */}
             </View>
           </View>
         {/* //</View> */}
@@ -324,16 +324,16 @@ class LoadWordsScreen extends React.Component {
   render() {
     return (
       <KeyboardAvoidingView behavior="padding" style={{flex: 1}}>
-        <SafeAreaView style={{flex: 1}}>
+        <SafeAreaView style={{flex: 1, backgroundColor:'#202020'}}>
           <HathorHeader
             withLogo
             onBackPress={() => this.props.navigation.goBack()}
           />
           <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View style={this.style.container}>
-              <Text style={this.style.title}>{t`To import a wallet,`}</Text>
+              <Text style={this.style.title}>{`Faça seu backcup`}</Text>
               <TextFmt style={this.style.text}>
-                {t`You need to **write down the ${this.numberOfWords} seed words** of your wallet, separated by space.`}
+                {`A seguir você pode ver as **${this.numberOfWords} palavras** que dão acesso à sua carteira.`}
               </TextFmt>
               <View style={this.style.inputView}>
                 <Text style={this.style.label}>{t`Words`}</Text>
