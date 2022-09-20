@@ -24,9 +24,9 @@ export class TxHistory {
       symbol = t`Unknown`;
     }
     if (this.balance > 0) {
-      return t`Received ${symbol}`;
+      return t`Recebido ${symbol}`;
     } if (this.balance < 0) {
-      return t`Sent ${symbol}`;
+      return t`Enviado ${symbol}`;
     }
     return t`You sent ${symbol} to yourself`;
   }

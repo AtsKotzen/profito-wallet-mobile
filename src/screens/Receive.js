@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { Dimensions, Keyboard, SafeAreaView } from 'react-native';
-import { t } from 'ttag';
+//import { t } from 'ttag';
 
 import { TabBar, TabView } from 'react-native-tab-view';
 import HathorHeader from '../components/HathorHeader';
@@ -26,8 +26,8 @@ class ReceiveScreen extends React.Component {
       // eslint thinks routes is not used, but TabView uses it
       // eslint-disable-next-line react/no-unused-state
       routes: [
-        { key: 'address', title: t`My Address` },
-        { key: 'paymentRequest', title: t`Payment Request` },
+        { key: 'address', title: `Minha Carteira` },
+        { key: 'paymentRequest', title: `Solicitar Pagamento` },
       ],
     };
 
@@ -102,7 +102,7 @@ class ReceiveScreen extends React.Component {
     return (
       <SafeAreaView style={{ flex: 1 }}>
         <HathorHeader
-          title={t`RECEIVE`}
+          title={`RECEBER`}
           withBorder
         />
         <TabView

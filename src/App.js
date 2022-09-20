@@ -132,15 +132,15 @@ const RegisterTokenStack = createStackNavigator(
 
 const tabBarIconMap = {
   Home: 'icDashboard',
-  Send: 'icSend',
-  Receive: 'icReceive',
+  Enviar: 'icSend',
+  Receber: 'icReceive',
   Settings: 'icSettings',
 };
 
 const TabNavigator = createBottomTabNavigator({
   Home: (IS_MULTI_TOKEN ? DashboardStack : MainScreen),
-  Send: SendStack,
-  Receive: ReceiveScreen,
+  Enviar: SendStack,
+  Receber: ReceiveScreen,
   Settings,
 }, {
   initialRoute: 'Home',
@@ -148,14 +148,14 @@ const TabNavigator = createBottomTabNavigator({
     activeTintColor: PRIMARY_COLOR,
     inactiveTintColor: 'rgba(0, 0, 0, 0.5)',
     style: {
-      paddingTop: 12,
-      paddingBottom: 12,
+      paddingTop: 5,
+      paddingBottom: 5,
     },
     tabStyle: {
       justifyContent: 'center',
     },
     showIcon: true,
-    showLabel: false,
+    showLabel: true,
   },
   defaultNavigationOptions: ({ navigation }) => ({
     tabBarIcon: ({ tintColor }) => {

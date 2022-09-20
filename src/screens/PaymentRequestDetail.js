@@ -70,7 +70,7 @@ class PaymentRequestDetail extends React.Component {
       const amount = renderValue(this.props.amount, isNFT);
       return (
         <TextFmt style={{ fontSize: 18 }}>
-          {t`You've just received **${amount} ${symbol}**`}
+          {`Você recebeu **${amount} ${symbol}**`}
         </TextFmt>
       );
     };
@@ -87,7 +87,7 @@ class PaymentRequestDetail extends React.Component {
         {renderPaymentConfirm()}
         <HathorHeader
           withBorder
-          title={t`PAYMENT REQUEST`}
+          title={`COBRAR`}
           onBackPress={() => this.props.navigation.goBack()}
         />
         <View style={{
