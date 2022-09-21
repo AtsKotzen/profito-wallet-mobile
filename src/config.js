@@ -30,13 +30,14 @@ export const _IS_MULTI_TOKEN = false;
  *   name: 'YanCoin',
  *   symbol: 'YAN',
  *   uid: '0000089ac2800ed9f1297d1569b7089bd26107d9c9d6a05d6dbe14890e793c41'
+ * Profito Rodrigo - 00003223d7d3c093a6ddf53a032e26a760d6d8c8928732126e459ca84bfe5efe:23548a2d]
  * }
  */
 //export const _DEFAULT_TOKEN = hathorLib.constants.HATHOR_TOKEN_CONFIG;
 export const _DEFAULT_TOKEN = {
       name: 'Profito Token',
       symbol: 'PRF',
-      uid: '0000089ac2800ed9f1297d1569b7089bd26107d9c9d6a05d6dbe14890e793c41'
+      uid: '00003223d7d3c093a6ddf53a032e26a760d6d8c8928732126e459ca84bfe5efe'
     };
 
 /**

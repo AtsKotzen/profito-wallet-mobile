@@ -21,7 +21,7 @@ const baseStyle = StyleSheet.create({
   title: {
     fontWeight: 'bold',
     fontSize: 20,
-    marginBottom: 16,
+    marginBottom: 12,
     color: '#E39B14'
   },
   text: {

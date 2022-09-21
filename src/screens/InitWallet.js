@@ -110,8 +110,7 @@ class InitialScreen extends React.Component {
 
   render() {
     return (
-      <SafeAreaView style={{flex: 1, backgroundColor: '#202020'}}>
-        {/* <View style={{backgroundColor: '#202020'}}> */}
+      <SafeAreaView style={{flex: 1, backgroundColor: '#202020'}}>        
           <HathorHeader withLogo />
           <View style={this.style.container}>
             <Text style={this.style.title}>{`Pronto.`}</Text>
@@ -133,13 +132,12 @@ class InitialScreen extends React.Component {
                 style={{marginBottom: 16}}
                 secondary
               />
-              {/* <NewHathorButton
+              <NewHathorButton
                 onPress={() => this.props.navigation.navigate('NewWordsScreen')}
                 title={t`New Wallet`}
-              /> */}
+              />
             </View>
-          </View>
-        {/* //</View> */}
+          </View>       
       </SafeAreaView>
     );
   }
@@ -164,11 +162,12 @@ class NewWordsScreen extends React.Component {
         flex: 1,
       },
       itemNumber: {
+        color: '#fda800',
         fontSize: 14,
       },
       itemText: {
-        color: '#000',
-        fontSize: 18,
+        color: '#fda800',
+        fontSize: 15,
       },
     }),
   );
@@ -213,7 +212,7 @@ class NewWordsScreen extends React.Component {
     };
 
     return (
-      <SafeAreaView style={{flex: 1}}>
+      <SafeAreaView style={{flex: 1, backgroundColor: '#202020'}}>
         <HathorHeader
           withLogo
           onBackPress={() => this.props.navigation.goBack()}
@@ -221,9 +220,9 @@ class NewWordsScreen extends React.Component {
         <View style={this.style.container}>
           <View>
             <Text
-              style={this.style.title}>{t`Your wallet has been created!`}</Text>
+              style={this.style.title}>{`Sua carteira foi criada!`}</Text>
             <TextFmt style={this.style.text}>
-              {t`You must **do a backup** and save the words below **in the same order they appear**.`}
+              {`Recomendamos **guardar as palavras** em um local **seguro**.`}
             </TextFmt>
           </View>
           {renderWords()}
@@ -234,7 +233,7 @@ class NewWordsScreen extends React.Component {
                   words: this.state.words,
                 })
               }
-              title={t`Next`}
+              title={`Avançar`}
             />
           </View>
         </View>

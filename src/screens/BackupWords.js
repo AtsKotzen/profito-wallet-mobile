@@ -16,7 +16,7 @@ import {
   View,
 } from 'react-native';
 import NewHathorButton from '../components/NewHathorButton';
-import HathorHeader from '../components/HathorHeader';
+//import HathorHeader from '../components/HathorHeader';
 import FeedbackModal from '../components/FeedbackModal';
 import checkIcon from '../assets/images/icCheckBig.png';
 import errorIcon from '../assets/images/icErrorBig.png';
@@ -143,7 +143,7 @@ class BackupWords extends React.Component {
             <FeedbackModal
               icon={<Image source={checkIcon} style={{ height: 105, width: 105 }} resizeMode='contain' />}
               text={
-                <Text>{t`Words saved correctly`}</Text>
+                <Text>{`Carteira iniciada!`}</Text>
               }
               onDismiss={() => {
                 this.setState({ modal: null }, () => {
@@ -162,8 +162,8 @@ class BackupWords extends React.Component {
             icon={<Image source={errorIcon} style={{ height: 105, width: 105 }} resizeMode='contain' />}
             text={(
               <Text>
-                <Strong>Wrong word.</Strong>
-                Please double check the words you saved and start the process again.
+                <Strong>Deu ruim.</Strong>
+                Você deve ter escrito errado, tente novamente.
               </Text>
 )}
             onDismiss={() => {
@@ -214,18 +214,18 @@ class BackupWords extends React.Component {
     };
 
     return (
-      <SafeAreaView style={{ flex: 1 }}>
-        <HathorHeader
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#202020' }}>
+        {/* <HathorHeader
           onBackPress={() => this.props.navigation.goBack()}
-        />
+        /> */}
         {this.state.modal}
         <View style={[this.style.container, { flexDirection: 'column', justifyContent: 'space-between' }]}>
           <View>
-            <Text style={this.style.title}>{t`To make sure you saved,`}</Text>
+            <Text style={this.style.title}>{`Para continuar,`}</Text>
             <Text style={this.style.text}>
-              {t`Please select the word that corresponds to the number below:`}
+              {`Selecione as palavras correspondentes ao número abaixo:`}
             </Text>
-            <Text style={[this.style.title, { textAlign: 'center', fontSize: 24 }]}>
+            <Text style={[this.style.title, { textAlign: 'center', fontSize: 21, paddingBottom: 30 }]}>
               {this.state.indexes[this.state.step]}
             </Text>
           </View>
