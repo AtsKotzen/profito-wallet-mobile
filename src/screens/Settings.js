@@ -46,8 +46,8 @@ export class Settings extends React.Component {
       alignItems: 'center',
     },
     networkContainerView: {
-      marginTop: 24,
-      marginBottom: 24,
+      marginTop: 2,
+      marginBottom: 5,
     },
     networkView: {
       backgroundColor: getLightBackground(0.1),
@@ -62,20 +62,20 @@ export class Settings extends React.Component {
       fontWeight: 'bold',
     },
     logoView: {
-      height: 22,
+      height: 35,
       width: 100,
       marginTop: 16,
       marginBottom: 16,
     },
     logo: {
-      height: 22,
+      height: 50,
       width: 100,
     },
   });
 
   render() {
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#F7F7F7' }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#202020' }}>
         <ScrollView contentContainerStyle={this.style.scrollView}>
           <View style={this.style.logoView}>
             <Logo
@@ -85,7 +85,7 @@ export class Settings extends React.Component {
           {(this.props.isOnline
             && (
             <View style={this.style.networkContainerView}>
-              <Text>{t`You are connected to`}</Text>
+              <Text style={{color:'#fda800'}}>{`Você está conectado na`}</Text>
               <View style={this.style.networkView}>
                 <Text style={this.style.networkText}>{this.props.network}</Text>
               </View>
@@ -93,24 +93,10 @@ export class Settings extends React.Component {
             )
           )}
 
-          <HathorList infinity>
-            <ListItem
-              text={(
-                <View style={{ flex: 1 }}>
-                  <Text style={{ marginBottom: 8, color: 'rgba(0, 0, 0, 0.5)', fontSize: 12 }}>{t`Connected to`}</Text>
-                  <Text
-                    style={{ fontSize: 12 }}
-                    adjustsFontSizeToFit
-                    minimumFontScale={0.5}
-                  >
-                    {this.props.server}
-                  </Text>
-                </View>
-)}
-              isFirst
-            />
+          <HathorList infinity>            
             <ListMenu
-              title={t`Security`}
+              isFirst
+              title={`Segurança`}
               onPress={() => this.props.navigation.navigate('Security')}
             />
             {IS_MULTI_TOKEN
@@ -130,11 +116,11 @@ export class Settings extends React.Component {
               )
             }
             <ListMenu
-              title={t`Reset wallet`}
+              title={`Reset wallet`}
               onPress={() => this.props.navigation.navigate('ResetWallet')}
             />
             <ListMenu
-              title={t`About`}
+              title={`Sobre`}
               onPress={() => this.props.navigation.navigate('About')}
             />
             <ListItem

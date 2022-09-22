@@ -95,7 +95,7 @@ class NewPaymentRequest extends React.Component {
     if (isTokenNFT(this.getTokenUID(), this.props.tokenMetadata)) {
       amount = parseInt(this.state.amount, 10);
     } else {
-      amount = getIntegerAmount(this.state.amount);
+      amount = getIntegerAmount(this.state.amount );
     }
     this.props.dispatch(newInvoice(address, amount, this.state.token));
     this.modalOpened = true;

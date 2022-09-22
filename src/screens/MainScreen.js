@@ -15,7 +15,7 @@ import {
   View,
   Image,
   TouchableWithoutFeedback,
-  TouchableHighlight,
+  TouchableHighlight,  
 } from 'react-native';
 import {connect} from 'react-redux';
 import {t} from 'ttag';
@@ -117,7 +117,7 @@ class MainScreen extends React.Component {
     const renderEmptyHistory = () => (
       <HathorList infinity>
         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-          <Strong>{t`No transactions`}</Strong>
+          <Strong>{`Nenhuma transação`}</Strong>
           <Text
             style={{
               marginTop: 8,
@@ -126,7 +126,7 @@ class MainScreen extends React.Component {
               width: 220,
             }}>
             {str2jsx(
-              t`|share:Share your address| with friends and start exchanging tokens`,
+              `|share:Compre PRF Token| e aproveite os benefícios do |share:profito.club|`,
               {
                 share: (x, i) => (
                   <Text
@@ -489,55 +489,69 @@ class BalanceView extends React.Component {
     },
     balanceAvailable: {
       paddingTop: 1,
-      fontSize: 55,
+      fontSize: 45,
       fontWeight: 'bold',
       color: '#fda800'
     },
     text1: {
-      paddingTop: 8,
+      paddingTop: 5,
       fontSize: 12,
       fontWeight: 'bold',
       color: 'rgba(0, 0, 0, 0.5)',
     },
     textSaldo: {
-      paddingTop: 3,
+      paddingTop: 1,
       fontSize: 18,
       fontWeight: 'bold',
       color: '#fda800',
     },
     textSymbol: {
       paddingBottom: 10,
-      fontSize: 18,
+      fontSize: 15,
       fontWeight: 'bold',
       color: '#fda800',
     },
     containerReais: {
-      paddingBottom: 5,      
       fontWeight: 'bold',
-      width: 200,
-      height: 45,
-      backgroundColor: '#fda800',
+      width: 150,
+      height: 35,
+      backgroundColor: 'white',
       borderRadius: 25,
     },
     textReais: {      
-      fontSize: 18,
+      fontSize: 13,
       fontWeight: 'bold',         
       borderRadius: 25,
       alignSelf: 'center',
       paddingTop: 9      
+    },
+    textBuy: {      
+      fontSize: 21,
+      fontWeight: 'bold',         
+      borderRadius: 25,
+      alignSelf: 'center',
+      paddingTop: 7,
+      color: '#eee'     
+    },
+    buyContainer: {
+      marginTop: 20,
+      marginBottom: 20,                
+      width: 200,
+      height: 45,
+      backgroundColor: '#fda800',
+      alignSelf: 'center',
+      borderRadius: 25,
     },
     textWelcome: {      
       fontSize: 18,
       fontWeight: 'bold',         
       borderRadius: 25,
       alignSelf: 'center',
-      paddingTop: 9,
-      paddingBottom: 9,
+      paddingTop: 7,      
       color: '#fda800'
     },
     expandButton: {
-      marginTop: 24,
-      marginBottom: 24     
+      marginTop: 50,          
     },
     networkView: {
       backgroundColor: getLightBackground(0.1),
@@ -609,9 +623,14 @@ class BalanceView extends React.Component {
             {`R$ `}
             {availableStr}
           </Text>
+          <View style={style.buyContainer}>
+            <Text style={style.textBuy} onPress={() => alert('Em desenvolvimento')}>
+              {`Comprar PRF`}
+            </Text>
+          </View>
         </View>
         <View>
-          <Text style={style.textWelcome}>{`Bem vindo, Athus!`}</Text>
+          <Text style={style.textWelcome}>{`Bem vindo!`}</Text>
         </View>
         <Image style={style.expandButton} source={chevronUp} 
         // width={12} height={7} 

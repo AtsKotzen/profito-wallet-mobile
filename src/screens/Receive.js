@@ -27,7 +27,7 @@ class ReceiveScreen extends React.Component {
       // eslint-disable-next-line react/no-unused-state
       routes: [
         { key: 'address', title: `Minha Carteira` },
-        { key: 'paymentRequest', title: `Solicitar Pagamento` },
+        { key: 'paymentRequest', title: `Cobrança` },
       ],
     };
 

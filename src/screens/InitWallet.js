@@ -128,7 +128,7 @@ class InitialScreen extends React.Component {
                 onPress={() =>
                   this.props.navigation.navigate('LoadWordsScreen')
                 }
-                title={t`Iniciar carteira`}
+                title={t`Importar carteira`}
                 style={{marginBottom: 16}}
                 secondary
               />
@@ -244,7 +244,7 @@ class NewWordsScreen extends React.Component {
 
 class LoadWordsScreen extends React.Component {
   state = {
-    words: 'chat impose eight usage kitten surround crumble antique hint reflect actual alley mutual fiscal quality shine quit thumb mouse trigger transfer item buddy poet',
+    words: '',
     errorMessage: '',
     isValid: false,
   };
@@ -274,7 +274,7 @@ class LoadWordsScreen extends React.Component {
     }),
   );
 
-  onChangeText = text => {
+  onChangeText = (text) => {
     const words = text.trim(/\s+/);
     let errorMessage = '';
     let isValid = false;
@@ -286,9 +286,7 @@ class LoadWordsScreen extends React.Component {
         if (e instanceof hathorLib.errors.InvalidWords) {
           errorMessage = e.message;
           if (e.invalidWords && e.invalidWords.length > 0) {
-            errorMessage = `${errorMessage} List of invalid words: ${e.invalidWords.join(
-              ', ',
-            )}.`;
+            errorMessage = `${errorMessage} List of invalid words: ${e.invalidWords.join(' ')}.`;
           }
         } else {
           throw e;
@@ -310,7 +308,7 @@ class LoadWordsScreen extends React.Component {
 
   loadClicked = () => {
     Keyboard.dismiss();
-    const words = 'chat impose eight usage kitten surround crumble antique hint reflect actual alley mutual fiscal quality shine quit thumb mouse trigger transfer item buddy poet';
+    const words = this.state.words.join(' ');
     this.setState({errorMessage: ''});
     const result = hathorLib.wallet.wordsValid(words);
     if (result.valid) {
@@ -339,7 +337,7 @@ class LoadWordsScreen extends React.Component {
                 <TextInput
                   style={this.style.input}
                   textAlignVertical="top"
-                  //onChangeText={this.onChangeText}
+                  onChangeText={this.onChangeText}
                   //placeholder={`chat impose eight usage kitten surround crumble antique hint reflect actual alley mutual fiscal quality shine quit thumb mouse trigger transfer item buddy poet`}
                   multiline
                   maxHeight="80%"
@@ -347,9 +345,8 @@ class LoadWordsScreen extends React.Component {
                   returnKeyType="done"
                   enablesReturnKeyAutomatically
                   autoFocus
-                  onSubmitEditing={this.loadClicked}
-                  blurOnSubmit
-                  value='chat impose eight usage kitten surround crumble antique hint reflect actual alley mutual fiscal quality shine quit thumb mouse trigger transfer item buddy poet'
+                  //onSubmitEditing={this.loadClicked}
+                  blurOnSubmit                  
                 />
                 <Text style={this.style.label}>
                   {this.state.words.length}/{this.numberOfWords}
