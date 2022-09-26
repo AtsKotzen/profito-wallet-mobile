@@ -71,16 +71,17 @@ const SimpleInput = (props) => {
 const styles = StyleSheet.create({
   inputContainer: {
     borderBottomWidth: 1,
-    borderColor: '#eee',
+    borderColor: '#fda800',
     paddingBottom: 8,
   },
   input: {
     lineHeight: 16,
     padding: 0,
     fontSize: 14,
+    color: '#fda800'
   },
   text: {
-    color: 'black',
+    color: '#fda800',
     fontSize: 14,
   },
   label: {
@@ -89,7 +90,7 @@ const styles = StyleSheet.create({
   auxiliarText: {
     marginTop: 8,
     fontSize: 12,
-    color: 'rgba(0, 0, 0, 0.5)',
+    color: '#fda800',
   },
   error: {
     // TODO define better color. Maybe also change underline color to red?

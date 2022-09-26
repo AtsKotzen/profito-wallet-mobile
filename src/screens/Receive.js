@@ -92,16 +92,16 @@ class ReceiveScreen extends React.Component {
     const renderTabBar = (props) => (
       <TabBar
         {...props}
-        indicatorStyle={{ backgroundColor: '#333' }}
-        style={{ backgroundColor: '#fff' }}
-        labelStyle={{ color: '#333' }}
+        indicatorStyle={{ backgroundColor: '#fda800' }}
+        style={{ backgroundColor: '#202020' }}
+        labelStyle={{ color: '#fda800' }}
         getLabelText={this.getLabelText}
       />
     );
 
     return (
-      <SafeAreaView style={{ flex: 1 }}>
-        <HathorHeader
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#202020' }}>
+        <HathorHeader          
           title={`RECEBER`}
           withBorder
         />

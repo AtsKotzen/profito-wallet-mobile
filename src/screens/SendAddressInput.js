@@ -47,7 +47,7 @@ class SendAddressInput extends React.Component {
 
   render() {
     return (
-      <SafeAreaView style={{ flex: 1 }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#202020' }}>
         <HathorHeader
           withBorder
           title={`ENVIAR`}
@@ -56,7 +56,7 @@ class SendAddressInput extends React.Component {
         <KeyboardAvoidingView behavior='padding' style={{ flex: 1 }} keyboardVerticalOffset={getKeyboardAvoidingViewTopDistance()}>
           <View style={{ flex: 1, padding: 16, justifyContent: 'space-between' }}>
             <SimpleInput
-              label={t`Address to send`}
+              label={t`Address to send`}              
               autoFocus
               onChangeText={this.onAddressChange}
               error={this.state.error}

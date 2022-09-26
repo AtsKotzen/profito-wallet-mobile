@@ -72,7 +72,7 @@ class SendScanQRCode extends React.Component {
     );
 
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#eee' }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#202020' }}>
         <HathorHeader
           title={`ENVIAR`}          
           rightElement={<ManualInfoButton />}

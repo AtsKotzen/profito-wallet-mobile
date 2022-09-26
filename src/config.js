@@ -37,7 +37,7 @@ export const _IS_MULTI_TOKEN = false;
 export const _DEFAULT_TOKEN = {
       name: 'Profito Token',
       symbol: 'PRF',
-      uid: '00003223d7d3c093a6ddf53a032e26a760d6d8c8928732126e459ca84bfe5efe'
+      uid: '0000000098fb346ed5251ef69180e12b11ab496b31122325a57a995e6e31ee32'
     };
 
 /**

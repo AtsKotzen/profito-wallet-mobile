@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 12,
     lineHeight: 14,
-    color: 'rgba(0,0,0,0.5)',
+    color: '#fda800',
   },
 });
 

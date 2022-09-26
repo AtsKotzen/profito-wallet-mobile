@@ -53,7 +53,7 @@ const HathorHeader = (props) => {
         />
       );
     }
-    return <Text>{props.title}</Text>;
+    return <Text style={{color: '#fda800'}}>{props.title}</Text>;
   };
 
   let extraStyle = {};

@@ -68,8 +68,9 @@ class ReceiveMyAddress extends React.Component {
       style: {
         padding: 16,
         borderBottomWidth: 1.5,
+        paddingBottom: 7,
         borderTopWidth: 1.5,
-        borderColor: '#e5e5ea',
+        borderColor: '#fda800',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
@@ -85,7 +86,7 @@ class ReceiveMyAddress extends React.Component {
         <View style={addressWrapperStyle.style}>
           <CopyClipboard
             text={this.state.address}
-            textStyle={{ fontSize: height < 650 ? 11 : 13 }}
+            textStyle={{ fontSize: height < 650 ? 11 : 13, color:'#fda800' }}
           />
         </View>
         <View style={{ flexDirection: 'row' }}>
@@ -97,7 +98,7 @@ class ReceiveMyAddress extends React.Component {
           <SimpleButton
             onPress={this.shareAddress}
             title={t`Share`}
-            color='#000'
+            color='#fda800'
             containerStyle={styles.buttonContainer}
           />
         </View>
@@ -113,12 +114,14 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     marginTop: 32,
     borderWidth: 1.5,
-    borderColor: '#e5e5ea',
+    borderColor: '#fda800',
+    
     borderRadius: 8,
     marginBottom: 32,
   },
   qrcodeWrapper: {
     padding: 24,
+    backgroundColor: 'white',
     flex: 1,
   },
   buttonContainer: {
@@ -129,7 +132,7 @@ const styles = StyleSheet.create({
   },
   leftButtonBorder: {
     borderRightWidth: 1.5,
-    borderColor: '#eee',
+    borderColor: '#fda800',
   },
 });
 
