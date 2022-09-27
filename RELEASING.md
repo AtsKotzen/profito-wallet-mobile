@@ -1,15 +1,15 @@
 
 # Bumping up the version
 
-The following files must be updated: `android/app/build.gradle`, `ios/HathorMobile.xcodeproj/project.pbxproj`, and `package.json`.
+The following files must be updated: `android/app/build.gradle`, `ios/ProfitoMobile.xcodeproj/project.pbxproj`, and `package.json`.
 
 In the `package.json`, the field `version` must be updated.
 
 In the `android/app/build.gradle`, the fields `versionCode` and `versionName` must be updated. The `versionCode` must always be increased because Google Play uses it to uniquelly identify the release.
 
-In the `ios/HathorMobile.xcodeproj/project.pbxproj`, the fields `CURRENT_PROJECT_VERSION` and `MARKETING_VERSION` must be updated. Usually the `CURRENT_PROJECT_VERSION` is always `1`, while the `MARKETING_VERSION` is updated with the new version. Notice that there are two places to update the `MARKETING_VERSION` field, one for debug and another for release.
+In the `ios/ProfitoMobile.xcodeproj/project.pbxproj`, the fields `CURRENT_PROJECT_VERSION` and `MARKETING_VERSION` must be updated. Usually the `CURRENT_PROJECT_VERSION` is always `1`, while the `MARKETING_VERSION` is updated with the new version. Notice that there are two places to update the `MARKETING_VERSION` field, one for debug and another for release.
 
-App Store uses the pair `(CFBundleShortVersionString, CFBundleVersion)` to identify a release. They are both from `ios/HathorMobile/Info.plist`.
+App Store uses the pair `(CFBundleShortVersionString, CFBundleVersion)` to identify a release. They are both from `ios/ProfitoMobile/Info.plist`.
 
 Create a git tag and a new release on GitHub.
 

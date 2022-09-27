@@ -1,4 +1,4 @@
-package com.hathormobile;
+package com.atsdevelop.profitomobile;
 
 import com.facebook.react.ReactInstanceManager;
 
