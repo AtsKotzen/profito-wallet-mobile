@@ -1,4 +1,4 @@
-# Hathor Wallet Mobile
+# Profito Wallet Mobile
 
 ## Install
 
