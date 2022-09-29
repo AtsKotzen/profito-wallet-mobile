@@ -326,7 +326,7 @@ msgid "TOKENS"
 msgstr ""
 
 #: src\screens\InitWallet.js:56
-msgid "Welcome to Hathor Wallet!"
+msgid "Welcome to Profito Wallet!"
 msgstr ""
 
 #: src\screens\InitWallet.js:79
@@ -467,7 +467,7 @@ msgid "Enter your PIN Code "
 msgstr ""
 
 #: src\screens\PinScreen.js:66
-msgid "Unlock Hathor Wallet"
+msgid "Unlock Profito Wallet"
 msgstr ""
 
 #: src\screens\PinScreen.js:232
