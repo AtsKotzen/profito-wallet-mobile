@@ -246,7 +246,7 @@ export const renderValue = (amount, isInteger) => {
     return hathorLib.helpersUtils.prettyIntegerValue(amount);
   }
 
-  return hathorLib.helpersUtils.prettyValue(amount)*100;
+  return hathorLib.helpersUtils.prettyValue(amount);
 };
 
 /**

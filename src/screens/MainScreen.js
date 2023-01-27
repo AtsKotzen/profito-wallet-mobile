@@ -622,12 +622,7 @@ class BalanceView extends React.Component {
             {`Valor atual: `}
             {`R$ `}
             {availableStr}
-          </Text>
-          <View style={style.buyContainer}>
-            <Text style={style.textBuy} onPress={() => alert('Em desenvolvimento')}>
-              {`Comprar PRF`}
-            </Text>
-          </View>
+          </Text>          
         </View>
         <View>
           <Text style={style.textWelcome}>{`Bem vindo!`}</Text>

@@ -44,7 +44,7 @@ class SendAmountInput extends React.Component {
    * error {string} error validating amount
    */
   state = {
-    amount: '',
+    amount: '0.1',
     token: this.props.selectedToken,
     error: null,
   };
