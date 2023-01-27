@@ -118,7 +118,7 @@ class MainScreen extends React.Component {
       <HathorList infinity>
         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
           <Strong>{`Nenhuma transação`}</Strong>
-          <Text
+          {/* <Text
             style={{
               marginTop: 8,
               lineHeight: 20,
@@ -138,7 +138,7 @@ class MainScreen extends React.Component {
                 ),
               },
             )}
-          </Text>
+          </Text> */}
         </View>
       </HathorList>
     );
