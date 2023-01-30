@@ -59,7 +59,7 @@ class WelcomeScreen extends React.Component {
         style={{flex: 1, backgroundColor: '#202020', paddingTop: 25}}>
         <HathorHeader withLogo />
         <View style={this.style.container}>
-          <Text style={this.style.title}>{`Bem vindo a Profito Club!`}</Text>
+          <Text style={this.style.title}>{`Bem vindo a Hathor PDV!`}</Text>
           <View>
             <Text style={this.style.text}>
               {`Durante os próximos passos vamos criar sua carteira digital.`}
@@ -67,20 +67,7 @@ class WelcomeScreen extends React.Component {
             <TextFmt style={this.style.text}>
               {`**Relaxe** enquanto configuramos tudo pra você!`}
             </TextFmt>
-            <Text style={this.style.text}>
-              {str2jsx(
-                `Para maiores informações, acesse o nosso site |link:https://profitoclub.com|.`,
-                {
-                  link: (x, i) => (
-                    <Link
-                      key={i}
-                      href="https://www.instagram.com/profitoclub//">
-                      {x}
-                    </Link>
-                  ),
-                },
-              )}
-            </Text>
+            
           </View>
           <View style={this.style.switchView}>
             <Switch
@@ -115,7 +102,7 @@ class InitialScreen extends React.Component {
           <View style={this.style.container}>
             <Text style={this.style.title}>{`Pronto.`}</Text>
             <TextFmt style={this.style.text}>
-              {`Bem vindo à  **Profito Club**.`}
+              {`Bem vindo à  **Hathor PDV**.`}
             </TextFmt>
             <TextFmt style={this.style.text}>
               {`Já estamos com tudo **configurado e seguro**.`}

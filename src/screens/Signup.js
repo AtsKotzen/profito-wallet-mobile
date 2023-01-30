@@ -31,9 +31,9 @@ export default class Signup extends Component {
             title={`Criar conta`}
             onPress={signup}
           />
-          {/* <Text style={styles.text}>Ainda não tem uma conta?</Text>
-          <Text style={styles.link}>Cadastre-se</Text> */}
-          <Text style={styles.profitoClub}>profito.club</Text>
+          <Text style={styles.text}>Ainda não tem uma conta?</Text>
+          <Text style={styles.link}>Cadastre-se</Text>
+          
         </View>
       </View>
     );
