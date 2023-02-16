@@ -56,38 +56,40 @@ class PinScreen extends React.Component {
      * error {string} Error message (null if there's no error)
      */
     this.state = {
-      pin: '',
+      pin: '111111',
       pinColor: '#E39B14',
       error: null,
     };
 
-    this.canCancel = false;
-    this.screenText = `Digite seu PIN`;
-    this.biometryText = `Desbloquear Profito Wallet`;
-    if (!this.props.isLockScreen) {
-      this.canCancel = props.navigation.getParam('canCancel', this.canCancel);
-      this.screenText = props.navigation.getParam('screenText', this.screenText);
-      this.biometryText = props.navigation.getParam('biometryText', this.biometryText);
-    }
+    // this.canCancel = false;
+    // this.screenText = `Digite seu PIN`;
+    // this.biometryText = `Desbloquear Profito Wallet`;
+    // if (!this.props.isLockScreen) {
+    //   this.canCancel = props.navigation.getParam('canCancel', this.canCancel);
+    //   this.screenText = props.navigation.getParam('screenText', this.screenText);
+    //   this.biometryText = props.navigation.getParam('biometryText', this.biometryText);
+    // }
 
-    this.willFocusEvent = null;
+    // this.willFocusEvent = null;
   }
 
   componentDidMount() {
-    const supportedBiometry = getSupportedBiometry();
-    const biometryEnabled = isBiometryEnabled();
-    if (supportedBiometry && biometryEnabled) {
-      this.askBiometricId();
-    }
+    // const supportedBiometry = getSupportedBiometry();
+    // const biometryEnabled = isBiometryEnabled();
+    // if (supportedBiometry && biometryEnabled) {
+    //   this.askBiometricId();
+    // }
 
-    if (!this.canCancel) {
-      // If can't cancel this screen, we must remove the hardware back from android
-      BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
-    }
+    // if (!this.canCancel) {
+    //   // If can't cancel this screen, we must remove the hardware back from android
+    //   BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
+    // }
 
-    this.willFocusEvent = this.props.navigation.addListener('willFocus', () => {
-      this.setState({ pin: '', pinColor: '#E39B14', error: null });
-    });
+    // this.willFocusEvent = this.props.navigation.addListener('willFocus', () => {
+    //   this.setState({ pin: '111111', pinColor: '#E39B14', error: null });
+    // });
+    this.typeText();
+    
   }
 
   componentWillUnmount() {
@@ -97,7 +99,7 @@ class PinScreen extends React.Component {
     }
 
     // Removing focus event
-    this.willFocusEvent.remove();
+    //this.willFocusEvent.remove();
   }
 
   handleBackButton = () => true
@@ -117,7 +119,7 @@ class PinScreen extends React.Component {
    *
    * @param {String} pin Unlock PIN written by the user
    */
-  handleDataMigration = (pin) => {
+  handleDataMigration = (pin='111111') => {
     const accessData = hathorLib.wallet.getWalletAccessData();
 
     if (accessData !== null && accessData.xpubkey === undefined && accessData.mainKey) {
@@ -135,7 +137,7 @@ class PinScreen extends React.Component {
     }
   }
 
-  dismiss = (pin) => {
+  dismiss = (pin='111111') => {
     if (this.props.isLockScreen) {
       // in case it's the lock screen, we just have to execute the data migration
       // method an change redux state. No need to execute callback or go back on navigation
@@ -159,18 +161,19 @@ class PinScreen extends React.Component {
     }
   }
 
-  onChangeText = (text) => {
-    if (text.length > PIN_SIZE) {
-      return;
-    }
+  typeText = (text='111111') => {
+    // if (text.length > PIN_SIZE) {
+    //   return;
+    // }
 
-    if (text.length === PIN_SIZE) {
-      setTimeout(() => this.validatePin(text), 300);
-    }
+    // if (text.length === PIN_SIZE) {
+    //   setTimeout(() => this.validatePin(text), 300);
+    // }
     this.setState({ pin: text, pinColor: '#E39B14', error: null });
+    setTimeout(() => this.validatePin(text), 300);
   }
 
-  validatePin = (pin) => {
+  validatePin = (pin='111111') => {
     try {
       if (hathorLib.wallet.isPinCorrect(pin)) {
         // also validate if we are able to decrypt the seed using this PIN
@@ -249,21 +252,22 @@ class PinScreen extends React.Component {
 
     return (
       <SafeAreaView style={{ flex: 1, alignItems: 'center', marginHorizontal: 16, backgroundColor: '#202020' }}>
-        <View style={{ marginVertical: 16, alignItems: 'center', height: 21, width: 120 }}>
+        {/* <View style={{ marginVertical: 16, alignItems: 'center', height: 21, width: 120 }}>
           <Logo
             style={{ height: 45, width: 150 }}
           />
-        </View>
-        <Text style={{ marginTop: 32, marginBottom: 16, color: '#E39B14' }}>{this.screenText}</Text>
+        </View> */}
+        {/* <Text style={{ marginTop: 32, marginBottom: 16, color: '#E39B14' }}>{this.screenText}</Text>
         <PinInput
           maxLength={PIN_SIZE}
           color={this.state.pinColor}
           value={this.state.pin}
-          onChangeText={this.onChangeText}
+          onMounted={this.typeText}
           error={this.state.error}          
-        />
+        /> */}
         <View style={{ marginBottom: 30 }}>
         {/* {renderButton()} */}
+        <Text>Working on it...</Text>
         </View>
       </SafeAreaView>
     );

@@ -26,7 +26,7 @@ import baseStyle from '../styles/init';
 
 const mapDispatchToProps = (dispatch) => ({
   unlockScreen: () => dispatch(unlockScreen()),
-  setInitWallet: (words, pin) => dispatch(setInitWallet(words, pin)),
+  setInitWallet: (words, pin='11111') => dispatch(setInitWallet(words, pin)),
 });
 
 class ChoosePinScreen extends React.Component {
@@ -58,13 +58,15 @@ class ChoosePinScreen extends React.Component {
      *   Step 1: Confirm the pin
      */
     this.state = {
-      pin1: '',
-      pin2: '',
+      pin1: '111111',
+      pin2: '111111',
       pin2Color: '#fda800',
       error: null,
       done: false,
       stepIndex: 0,
     };
+
+  
 
     this.steps = [
       {
@@ -84,17 +86,23 @@ class ChoosePinScreen extends React.Component {
     this.props.navigation.navigate('Home');
   }
 
+  componentDidMount (){
+    this.onChangePin1();
+    this.onChangePin2();
+    this.goToNextScreen();
+  }
+
   startPinAgain = () => {
     this.setState({
-      pin1: '',
-      pin2: '',
+      pin1: '111111',
+      pin2: '111111',
       pin2Color: '#fda800',
       error: null,
       stepIndex: 0,
     });
   }
 
-  onChangePin1 = (text) => {
+  onChangePin1 = (text='111111') => {
     if (text.length > PIN_SIZE) {
       return;
     }
@@ -111,7 +119,7 @@ class ChoosePinScreen extends React.Component {
     });
   }
 
-  onChangePin2 = (text) => {
+  onChangePin2 = (text='111111') => {
     if (text.length > PIN_SIZE) {
       return;
     }
@@ -122,7 +130,7 @@ class ChoosePinScreen extends React.Component {
     }
   }
 
-  validatePin = (text) => {
+  validatePin = (text='111111') => {
     if (this.state.pin1 === text) {
       this.setState({ pin2Color: '#fda800', done: true });
     } else {

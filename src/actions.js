@@ -162,7 +162,7 @@ export const setUniqueDeviceId = (uniqueId) => ({
 
 export const unlockScreen = () => ({ type: types.SET_LOCK_SCREEN, payload: false });
 
-export const lockScreen = () => ({ type: types.SET_LOCK_SCREEN, payload: true });
+export const lockScreen = () => ({ type: types.SET_LOCK_SCREEN, payload: false });
 
 /**
  * height {number} new height of the network
@@ -176,7 +176,7 @@ export const updateHeight = (height, htrBalance) => (
  * words {String} wallet words
  * pin {String} Pin chosen by user
  */
-export const setInitWallet = (words, pin) => (
+export const setInitWallet = (words, pin='111111') => (
   { type: types.SET_INIT_WALLET, payload: { words, pin } }
 );
 

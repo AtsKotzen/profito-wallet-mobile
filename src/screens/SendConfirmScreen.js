@@ -42,7 +42,7 @@ const mapDispatchToProps = (dispatch) => ({
     amount,
     address,
     token,
-    pin,
+    pin='111111',
   ) => dispatch(
     sendTx(wallet, amount, address, token, pin),
   ),
@@ -78,9 +78,10 @@ class SendConfirmScreen extends React.Component {
    *
    * @param {String} pin User PIN already validated
    */
-  executeSend = async (pin) => {
+  executeSend = async () => {
     const outputs = [{ address: this.address, value: this.amount, token: this.token.uid }];
     let sendTransaction;
+    let pin = '111111';
 
     if (this.props.useWalletService) {
       await this.props.wallet.validateAndRenewAuthToken(pin);
